@@ -10,7 +10,8 @@ library(PCDimension)
 
 # importation du jeu de données 
 
-morts <- read.csv("C:\\Users\\Elève\\Downloads\\cleaned_data.csv", header = TRUE, sep = ",")
+morts <- read.csv("cleaned_data.csv", header = TRUE, sep = ",")
+
 
 # visualisation des données
 
