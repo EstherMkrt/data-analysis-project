@@ -1,7 +1,9 @@
 ---
 title: "Rapport"
 author: "Mkrtchyan, Toure"
-format: html
+format: 
+  html: default
+  pdf: default
 editor: visual
 ---
 
