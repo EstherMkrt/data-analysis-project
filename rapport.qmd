@@ -1,5 +1,5 @@
 ---
-title: "Rapport"
+title: "Analyse factorielle des correspondances des causes de décès par pays"
 author: "Mkrtchyan, Toure"
 format:
   html:
@@ -16,9 +16,15 @@ editor: visual
 
 En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, cogit commit -m "Ajout d'un paragraphe sur l'introduction"mpte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et les types de causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées. L’Analyse Factorielle des Correspondances (AFC) est une méthode de statistique descriptive multidimensionnelle (MDS) permettant d’explorer la relation entre deux variables qualitatives.
 
-# (mettre un titre : AFC ??)
+# Analyse factorielle des correspondances des causes de décès par pays
 
-## Préparation du jeu de donné
+# Préparation des données
+
+## Charger les librairies et les données
+
+## Préparer les données (nom des lignes, suppression de la colonne pays, vérification)
+
+## 
 
 URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
 
@@ -30,4 +36,32 @@ La variable correspondant à l’année a été supprimée du fait que toutes le
 
 Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport. Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés.
 
+# Analyse exploratoire
+
+##  Visualisation des données par barplots
+
+##  Profils ligne et colonne
+
+##  Comparaison de pays
+
+##  Graphiques de profils ligne et colonnes avec `ggplot2`
+
+#  Analyses avancées ( AFC et Tests)
+
+## Test du khi-deux et V de Cramer
+
+## Lancement de l’AFC
+
+## Critère du bâton brisé pour sélectionner les axes
+
+## Analyse des contributions des lignes et colonnes
+
+## Distances au centre de gravité
+
 # Conclusion
+
+Résumer les principaux résultats :Combien d’axes retenus, quelles causes/pays se distinguent Interprétation des distances et profils. Limites de l’analyse. Perspectives éventuelles
+
+# Références 
+
+##  Articles, manuels R, sources des données
