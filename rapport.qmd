@@ -1,9 +1,41 @@
 ---
 title: "Rapport"
 author: "Mkrtchyan, Toure"
-format: 
-  html: default
-  pdf: default
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
 editor: visual
 ---
 
+
+# Introduction
+
+
+
+# (mettre un titre : AFC ??)
+
+
+
+## Préparation du jeu de donné
+
+URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
+
+
+Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world].
+Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.
+
+Afin de concentrer l’étude sur l’année la plus récente, nous avons extrait uniquement les observations de 2019. Une vérification préalable a confirmé l’absence de valeurs manquantes dans les variables retenues. Les données extraites ont ensuite été enregistrées dans un nouveau fichier CSV, distinct du fichier initial.
+
+La variable correspondant à l’année a été supprimée du fait que toutes les lignes concernent 2019. De même, parmi les deux colonnes descriptives des pays (nom complet et abréviation), seule la colonne des abréviations a été conservée, les correspondances avec les noms complets étant stockées dans un fichier séparé.
+
+Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport.
+Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés.
+
+
+
+# Conclusion
