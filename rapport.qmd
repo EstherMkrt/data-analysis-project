@@ -18,13 +18,7 @@ En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent
 
 # Analyse factorielle des correspondances des causes de décès par pays
 
-# Préparation des données
-
-## Charger les librairies et les données
-
-## Préparer les données (nom des lignes, suppression de la colonne pays, vérification)
-
-## 
+## Préparation des données
 
 URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
 
@@ -35,6 +29,14 @@ Afin de concentrer l’étude sur l’année la plus récente, nous avons extrai
 La variable correspondant à l’année a été supprimée du fait que toutes les lignes concernent 2019. De même, parmi les deux colonnes descriptives des pays (nom complet et abréviation), seule la colonne des abréviations a été conservée, les correspondances avec les noms complets étant stockées dans un fichier séparé.
 
 Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport. Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés.
+
+
+## Charger les librairies et les données
+
+## Préparer les données (nom des lignes, suppression de la colonne pays, vérification)
+
+## 
+
 
 # Analyse exploratoire
 
