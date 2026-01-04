@@ -14,7 +14,7 @@ editor: visual
 
 # Introduction
 
-En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
+En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
 
 # Analyse factorielle des correspondances des causes de décès par pays
 
@@ -30,15 +30,112 @@ La variable correspondant à l’année a été supprimée du fait que toutes le
 
 Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport.
 
-Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il est pertinent de faire une AFC.
+Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.
 
-## 
+```{r}
+#| echo: false
+
+library(knitr)
+
+codage <- read.csv("codage_causes.csv")
+kable(
+  codage,
+  caption = "Encodage des causes de décès"
+)
+```
 
 # Analyse exploratoire
 
+## Chargement des données
+
+La première étape de l'analyse consiste (de toute évidence) à charger les librairies n&cessaires ainsi que le jeu de données à analyser dans le script R.
+
+Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d'identification des lignes et elle est ensuite supprimée.
+
+Le jeu de donn"es obtenu est stocké dans la variable "morts" pour le rrste de l'analyse.
+
+```{r}
+
+
+morts <- read.csv("cleaned_data.csv", header = TRUE, sep = ",")
+
+rownames(morts) <- morts[,1]
+
+morts <- morts[,-1]
+
+#View(morts)
+
+```
+
 ## Visualisation des données par barplots
 
+### Arménie :
+
+```{r}
+#| echo: false
+#| fig-cap: "Répartition des causes de décès en Arménie en 2019"
+
+par(mar = c(6,10,4,2))
+barplot(
+  as.numeric(morts["ARM", ]),
+  names.arg = colnames(morts),
+  col = "purple3",
+  border = "white",
+  main = "Arménie",
+  horiz = TRUE,
+  las = 1,
+  xlab = "Nombre de décès"
+)
+```
+
+\[on peut ajouter les commentaires ici \]
+
+### Mali :
+
+```{r}
+#| echo: false
+#| fig-cap: "Répartition des causes de décès au Mali en 2019"
+
+par(mar = c(6,10,4,2))
+barplot(
+  as.numeric(morts["MLI", ]),
+  names.arg = colnames(morts),
+  col = "green",
+  border = "white",
+  main = "Mali",
+  horiz = TRUE,
+  las = 1,
+  xlab = "Nombre de décès"
+)
+```
+
+\[on peut ajouter les commentaires ici \]
+
+### France :
+
+```{r}
+#| echo: false
+#| fig-cap: "Répartition des causes de décès en France en 2019"
+
+par(mar = c(6,10,4,2))
+barplot(
+  as.numeric(morts["FRA", ]),
+  names.arg = colnames(morts),
+  col = "blue",
+  border = "white",
+  main = "France",
+  horiz = TRUE,
+  las = 1,
+  xlab = "Nombre de décès"
+)
+```
+
+\[on peut ajouter les commentaires ici \]
+
+
 ## Profils ligne et colonne
+
+
 
 ## Comparaison de pays
 
