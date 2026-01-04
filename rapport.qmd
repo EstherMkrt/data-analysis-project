@@ -192,6 +192,12 @@ Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de
 
 ## Critère du bâton brisé pour sélectionner les axes
 
+Pour compléter l’identification des axes significatifs, le critère du bâton brisé est utilisé. Cette méthode compare la proportion d’inertie expliquée par chaque axe à une distribution de référence obtenue par répartition aléatoire. Les valeurs propres observées sont ainsi mises en relation avec les proportions théoriques du bâton brisé, permettant de distinguer les axes apportant une information réelle de ceux qui ne contiennent qu’un bruit statistique.
+
+La comparaison numérique indique que les axes dont l’inertie observée dépasse celle du bâton brisé sont considérés comme pertinents. Dans cette analyse, quatre axes présentent une inertie supérieure à la valeur attendue par le bâton brisé et sont donc retenus pour l’interprétation factorielle.
+
+Un diagramme comparatif illustre visuellement la sélection des axes : les barres représentant l’inertie observée sont mises côte à côte avec celles du bâton brisé. Cette représentation permet de visualiser facilement quels axes dépassent le seuil et confirment leur pertinence pour l’étude des relations entre pays et causes de décès.
+
 ## Analyse des contributions des lignes et colonnes
 
 ## Distances au centre de gravité
