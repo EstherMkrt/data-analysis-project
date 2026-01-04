@@ -292,22 +292,22 @@ mean(pres.afc$eig[,1])
 
 
 
-# 1) Charger la librairie nécessaire
+#  Charger la librairie nécessaire
 library(PCDimension)
 
-# 2) Nombre d’axes factoriels (axes non nuls)
+#  Nombre d’axes factoriels (axes non nuls)
 nb_axes <- nrow(pres.afc$eig)
 
-# 3) Inertie observée issue de l’AFC (en %)
+#  Inertie observée issue de l’AFC (en %)
 # Colonne 2 de pres.afc$eig = pourcentage d’inertie
 vp <- pres.afc$eig[, 2]
 
-# 4) Calcul du critère du bâton brisé (en %)
+#  Calcul du critère du bâton brisé (en %)
 # brokenStick donne des proportions → on multiplie par 100
 bs <- 100 * brokenStick(1:nb_axes, nb_axes)
 
 
-# 5) Comparaison numérique : axes pertinents
+#  Comparaison numérique : axes pertinents
 # TRUE = axe retenu
 vp > bs
 
