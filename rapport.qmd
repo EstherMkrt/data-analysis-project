@@ -56,8 +56,7 @@ Au moment du chargement de données, la première colonne du jeu de données est
 
 Le jeu de donn"es obtenu est stocké dans la variable "morts" pour le reste de l'analyse.
 
-
-#### Yester 
+#### Yester
 
 Le jeu de données utilisé pour cette analyse est importé à partir d’un fichier CSV préalablement nettoyé (\\texttt{cleaned_data.csv}). Il regroupe, pour chaque pays, le nombre de décès selon différentes causes. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
 
@@ -145,12 +144,7 @@ barplot(
 
 \[on peut ajouter les commentaires ici \]
 
-
-
-
 ## Comparaison de pays
-
-
 
 Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant le nombre de décès par cause respectivement en Arménie, au Mali et en France. Ces représentations graphiques ont pour objectif de comparer la structure de la mortalité selon les principales causes de décès dans chacun des pays étudiés.
 
@@ -175,6 +169,16 @@ Les profils lignes sont ensuite représentés graphiquement afin de faciliter l�
 # Analyses avancées ( AFC et Tests)
 
 ## Test du khi-deux et V de Cramer
+
+Afin d’évaluer statistiquement l’existence d’un lien entre les pays et les causes de décès, un test du khi-deux d’indépendance est réalisé à partir du tableau de contingence. L’hypothèse nulle H0H_0H0​ suppose l’indépendance entre le pays et la cause de décès, tandis que l’hypothèse alternative H1H_1H1​ postule l’existence d’une dépendance entre ces deux variables.
+
+Le test met en évidence une statistique du khi-deux associée à une p-value faible, conduisant au rejet de l’hypothèse d’indépendance au seuil usuel. Cela suggère que la répartition des causes de décès diffère significativement selon les pays considérés. Toutefois, l’interprétation de ce résultat doit être nuancée, car la structure du tableau — notamment la présence de nombreux effectifs élevés et de fortes disparités entre pays — limite la pertinence stricte du test du khi-deux.
+
+Afin de quantifier l’intensité de la liaison entre les deux variables, le coefficient de V de Cramér est calculé. La valeur obtenue indique une liaison faible entre le pays et la cause de décès, malgré le rejet de l’hypothèse d’indépendance. Ce résultat souligne que la dépendance statistique observée est réelle mais modérée.
+
+L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Certains pays, notamment la France et le Mali, présentent des écarts notables entre effectifs observés et attendus pour certaines causes de décès, traduisant des spécificités nationales dans la structure de la mortalité.
+
+Ces limites et observations justifient le recours à une méthode exploratoire multivariée telle que l’analyse factorielle des correspondances, plus adaptée à l’étude des relations entre pays et causes de décès dans un tableau de contingence de grande dimension.
 
 ## Lancement de l’AFC
 
