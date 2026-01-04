@@ -38,6 +38,22 @@ Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviatio
 
 ## Visualisation des données par barplots
 
+Le jeu de données utilisé pour cette analyse est importé à partir d’un fichier CSV préalablement nettoyé (\\texttt{cleaned_data.csv}). Il regroupe, pour chaque pays, le nombre de décès selon différentes causes. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
+
+La variable \\textit{Country} est ensuite utilisée comme identifiant des individus statistiques (les pays). Elle est définie comme nom de ligne du tableau, puis supprimée des variables explicatives afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.
+
+Une vérification du jeu de données à l’aide de l’affichage des premières lignes confirme la bonne manipulation des données et l’absence d’anomalies apparentes.
+
+## 
+
+Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant le nombre de décès par cause respectivement en Arménie, au Mali et en France. Ces représentations graphiques ont pour objectif de comparer la structure de la mortalité selon les principales causes de décès dans chacun des pays étudiés.
+
+Les causes de décès sont représentées sur l’axe des ordonnées, tandis que l’axe des abscisses indique le nombre de morts. Ce choix de visualisation permet une lecture claire et facilite la comparaison entre catégories.
+
+L’analyse met en évidence des profils de mortalité contrastés. En France et en Arménie, les décès sont majoritairement dus aux maladies non transmissibles, telles que les maladies cardiovasculaires ou les cancers. À l’inverse, au Mali, les maladies transmissibles ainsi que certaines causes évitables représentent une part plus importante de la mortalité totale.
+
+Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
+
 ## Profils ligne et colonne
 
 ## Comparaison de pays
