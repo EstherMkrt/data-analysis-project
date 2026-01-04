@@ -56,9 +56,15 @@ Cette analyse descriptive constitue une première étape exploratoire. Elle perm
 
 ## Profils ligne et colonne
 
-## Comparaison de pays
+Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
-## Graphiques de profils ligne et colonnes avec `ggplot2`
+De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
+
+## Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
+
+Les profils lignes sont ensuite représentés graphiquement afin de faciliter l’interprétation. Le profil ligne de la France met en évidence la prédominance des maladies non transmissibles dans la structure de la mortalité, confirmant les observations issues de l’analyse par diagrammes en barres. Une comparaison des profils lignes de la France et du Mali souligne des contrastes marqués : la France présente une concentration plus forte des décès sur les maladies chroniques, tandis que le Mali affiche une part relativement plus importante de maladies transmissibles et de causes évitables. Ces différences traduisent des stades distincts de transition épidémiologique et fournissent une base pertinente pour des analyses multivariées ultérieures, telles que l’analyse des correspondances.
+
+## 
 
 # Analyses avancées ( AFC et Tests)
 
