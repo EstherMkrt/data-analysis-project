@@ -200,11 +200,35 @@ Un diagramme comparatif illustre visuellement la sélection des axes : les barre
 
 ## Analyse des contributions des lignes et colonnes
 
+Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays.
+
+Les biplots combinant lignes et colonnes sur les premiers plans factoriels fournissent une vue d’ensemble des relations entre pays et causes. Le premier plan factoriel (axes 1 et 2) est généralement le plus informatif, mais d’autres combinaisons d’axes peuvent également révéler des dimensions secondaires de variation.
+
+Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats.
+
+La qualité de représentation de chaque modalité est évaluée à l’aide du cos2, indiquant la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités avec un cos2 élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Des diagrammes filtrés sur le cos2 permettent de visualiser clairement les pays et causes les mieux représentés, tout en réduisant l’encombrement visuel des graphiques.
+
+Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.
+
 ## Distances au centre de gravité
+
+L’AFC permet également de calculer la distance de chaque pays et de chaque cause au centre de gravité (barycentre) de l’ensemble des données. Cette distance est obtenue en rapportant l’inertie d’une modalité à sa masse, ce qui fournit une mesure de l’écart par rapport au profil moyen. Les pays dont la distance est faible possèdent un profil proche de la moyenne, tandis que ceux ayant une distance élevée présentent des profils atypiques ou fortement différenciés.
+
+La visualisation des distances au barycentre, par diagrammes en barres verticales ou horizontales, met en évidence les pays dont les profils sont les plus représentatifs et ceux qui s’écartent le plus du centre de gravité. Cette information est utile pour identifier les pays ou causes présentant des caractéristiques particulières et guide l’interprétation des plans factoriels précédemment étudiés.
 
 # Conclusion
 
+**Fatoumata**
+
 Résumer les principaux résultats :Combien d’axes retenus, quelles causes/pays se distinguent Interprétation des distances et profils. Limites de l’analyse. Perspectives éventuelles
+
+**Yester**
+
+L’analyse des données de mortalité par pays et par cause a permis d’illustrer la richesse et la diversité des profils de décès dans le monde. L’exploration initiale par diagrammes en barres a montré des différences marquées entre pays, notamment entre pays à revenu élevé et pays à revenu faible. Les profils lignes et colonnes ont permis de comparer les structures de mortalité de manière normalisée et d’identifier les causes et pays les plus contributifs à chaque axe factoriel.
+
+Le test du khi-deux a confirmé l’existence d’une dépendance statistique entre pays et causes de décès, bien que la force de cette liaison soit modérée. L’AFC a permis de synthétiser cette information dans un espace de faible dimension, en sélectionnant les axes les plus pertinents selon les critères de Kaiser et du bâton brisé. L’examen des plans factoriels, des contributions et des distances au centre de gravité a fourni une compréhension détaillée des profils atypiques et des similarités entre pays et causes.
+
+En conclusion, cette approche méthodologique a permis d’identifier les tendances globales et les particularités locales de la mortalité, fournissant une base solide pour des analyses comparatives et pour des prises de décision en santé publique. Les résultats mettent en évidence à la fois les déterminants communs et les spécificités nationales des causes de décès, illustrant l’intérêt des méthodes multivariées pour l’analyse de données de grande dimension.
 
 # Références
 
