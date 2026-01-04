@@ -182,6 +182,14 @@ Ces limites et observations justifient le recours à une méthode exploratoire m
 
 ## Lancement de l’AFC
 
+Pour explorer les relations entre les pays et les causes de décès, une analyse factorielle des correspondances (AFC) est réalisée. Cette méthode multivariée est particulièrement adaptée aux tableaux de contingence et permet de visualiser les dépendances entre lignes (pays) et colonnes (causes) tout en réduisant la dimensionnalité des données.
+
+L’AFC est appliquée aux 204 pays du tableau, considérés comme lignes actives. Les valeurs propres associées aux axes factoriels sont examinées afin de déterminer la part d’inertie expliquée par chaque axe et d’identifier le nombre d’axes significatifs à retenir. La décroissance des valeurs propres est représentée graphiquement pour faciliter l’interprétation. La somme des valeurs propres correspond à l’inertie totale du tableau, qui peut également être calculée à partir de la statistique du khi-deux normalisée par l’effectif total (Phi2).
+
+Le critère de Kaiser est utilisé pour identifier les axes factoriels dont l’inertie dépasse la moyenne, indiquant qu’ils expliquent une proportion d’information supérieure à celle attendue par hasard. Dans cette analyse, six axes présentent une inertie supérieure à la moyenne et sont donc retenus pour l’interprétation.
+
+Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de visualiser la contribution relative de chaque axe à la structure globale des données, préparant ainsi l’interprétation des positions des pays et des causes sur les plans factoriels. Cette étape constitue un prérequis essentiel avant de produire les représentations graphiques des individus et des variables dans l’espace factoriel.
+
 ## Critère du bâton brisé pour sélectionner les axes
 
 ## Analyse des contributions des lignes et colonnes
