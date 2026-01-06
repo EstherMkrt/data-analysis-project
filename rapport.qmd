@@ -48,21 +48,11 @@ kable(
 
 ## Chargement des données
 
-#### Fatoumata
+La première étape de l'analyse consiste (de toute évidence) à charger les librairies n&cessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
 
-La première étape de l'analyse consiste (de toute évidence) à charger les librairies n&cessaires ainsi que le jeu de données à analyser dans le script R.
+Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d'identification des lignes et elle est ensuite supprimée, afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.
 
-Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d'identification des lignes et elle est ensuite supprimée.
-
-Le jeu de donn"es obtenu est stocké dans la variable "morts" pour le reste de l'analyse.
-
-#### Yester
-
-Le jeu de données utilisé pour cette analyse est importé à partir d’un fichier CSV préalablement nettoyé (\\texttt{cleaned_data.csv}). Il regroupe, pour chaque pays, le nombre de décès selon différentes causes. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
-
-La variable \\textit{Country} est ensuite utilisée comme identifiant des individus statistiques (les pays). Elle est définie comme nom de ligne du tableau, puis supprimée des variables explicatives afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.
-
-Une vérification du jeu de données à l’aide de l’affichage des premières lignes confirme la bonne manipulation des données et l’absence d’anomalies apparentes.
+Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de l'analyse. Une vérification du jeu de données à l’aide de l’affichage des premières lignes confirme la bonne manipulation des données et l’absence d’anomalies apparentes.
 
 ## 
 
@@ -270,8 +260,6 @@ Les profils lignes sont ensuite représentés graphiquement afin de faciliter l�
 
 ## 
 
-
-
 # Analyses avancées ( AFC et Tests)
 
 ## Test du khi-deux et V de Cramer
@@ -418,7 +406,6 @@ mean(pres.afc$eig[,1])
 
 
 ```
-
 
 Pour explorer les relations entre les pays et les causes de décès, une analyse factorielle des correspondances (AFC) est réalisée. Cette méthode multivariée est particulièrement adaptée aux tableaux de contingence et permet de visualiser les dépendances entre lignes (pays) et colonnes (causes) tout en réduisant la dimensionnalité des données.
 
