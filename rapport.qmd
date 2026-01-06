@@ -48,7 +48,7 @@ kable(
 
 ## Chargement des données
 
-La première étape de l'analyse consiste (de toute évidence) à charger les librairies n&cessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
+La première étape de l'analyse consiste à charger les librairies nécessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
 
 Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d'identification des lignes et elle est ensuite supprimée, afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.
 

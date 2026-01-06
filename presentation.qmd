@@ -1,25 +1,36 @@
 ---
-title: "Présentation"
+title: "Analyse factorielle des correspondances des causes de décès par pays"
 author: "Mkrtchyan, Toure"
-format: revealjs
+format:
+  revealjs:
+    theme: beige
+    slide-level: 1
+  pdf: default
 editor: visual
 ---
 
-## Quarto
+# Introduction
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : Existe-t-il un lien entre le niveau de développement des pays et différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ? Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
 
-## Bullets
+# Analyse factorielle des correspondances des causes de décès par pays
 
-When you click the **Render** button a document will be generated that includes:
+Cette étude vise à analyser les structures de mortalité à l’échelle mondiale en comparant les profils de décès des différents pays. L’AFC permet de représenter simultanément les pays et les causes de décès dans un espace de faible dimension, afin de mettre en évidence des proximités et des oppositions entre profils de mortalité.
 
--   Content authored with markdown
--   Output from executable code
+# Préparation des données
 
-## Code
+URL du jeu de données :\
+https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.
+# Analyse exploratoire
 
-```{r}
-1 + 1
-```
+
+on essaie
+
+## Chargement des données
+
+# Visualisation des données par barplots
+
+### Arménie : ouyuiy
+
