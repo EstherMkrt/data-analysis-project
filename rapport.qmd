@@ -311,9 +311,10 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 
 Ces limites et observations justifient le recours à une méthode exploratoire multivariée telle que l’analyse factorielle des correspondances, plus adaptée à l’étude des relations entre pays et causes de décès dans un tableau de contingence de grande dimension.
 
-```{r}
+
 ## Lancement de l’AFC
 
+```{r}
 #Lancement de l'AFC avec R
 
 library(FactoMineR)
