@@ -421,7 +421,7 @@ fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
 
 
-# Calcul et interprétation des distances au CG pour les départements...
+# Calcul et interprétation des distances au CG pour les pays...
 
 
 # Les inerties sont données par 
