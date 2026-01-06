@@ -307,10 +307,9 @@ Le test met en évidence une statistique du khi-deux très élevée (36 396 969)
 
 Afin de quantifier l’intensité de la liaison entre les deux variables, le coefficient de V de Cramér est calculé. La valeur obtenue étant 0.149 indique une liaison faible entre le pays et la cause de décès, malgré le rejet de l’hypothèse d’indépendance. Ce résultat souligne que la dépendance statistique observée est réelle mais modérée.
 
-L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Certains pays, notamment la France et le Mali, présentent des écarts notables entre effectifs observés et attendus pour certaines causes de décès, traduisant des spécificités nationales dans la structure de la mortalité.
+L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Ces écarts traduisent des phénomènes d’attirance et de répulsion : un résidu standardisé positif indique qu’un pays et une cause se rencontrent plus fréquemment que prévu (attirance), tandis qu’un résidu standardisé négatif montre une occurrence moindre que prévu (répulsion). Un résidu supérieur à 2 ou inférieur à −2 est généralement considéré comme significatif.
 
-Ces limites et observations justifient le recours à une méthode exploratoire multivariée telle que l’analyse factorielle des correspondances, plus adaptée à l’étude des relations entre pays et causes de décès dans un tableau de contingence de grande dimension.
-
+À titre d’illustration, le Bangladesh (BGD) présente un résidu standardisé de −99,09 pour la malaria (C5), ce qui traduit une répulsion extrêmement marquée : cette cause est très fortement sous-représentée dans ce pays par rapport à ce qui serait attendu sous l’hypothèse d’indépendance. À l’inverse, l’Afghanistan (AFG) affiche un résidu standardisé très élevé (116,45) pour les troubles maternels (C8), indiquant une attirance très forte entre ce pays et cette cause de décès, largement surreprésentée par rapport au modèle d’indépendance.
 
 ## Lancement de l’AFC
 
