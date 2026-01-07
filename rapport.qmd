@@ -325,7 +325,7 @@ tot <- sum(morts[1:204,])
 inertie_totale <- sum(pres.afc$eig[, 1])
 nb_axes <- nrow(pres.afc$eig)
 inertie_moyenne <- inertie_totale / nb_axes
-inertie_moyenne
+#inertie_moyenne
 
 pres.afc$eig
 inertie_axes <- pres.afc$eig[, 1]
@@ -479,8 +479,8 @@ fviz_contrib(pres.afc, choice = "row", axes=4)
 
 # Contributions des causes
 
-sort(pres.afc$col$contrib[,1], T)
-sort(pres.afc$col$contrib[,2], T)
+#sort(pres.afc$col$contrib[,1], T)
+#sort(pres.afc$col$contrib[,2], T)
 
 # Avec factoextra : plus facile à interpréter
 fviz_contrib(pres.afc, choice = "col", axes=1)

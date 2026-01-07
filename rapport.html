@@ -125,48 +125,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport.</p>
 <p>Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'factoextra' a été compilé avec la version R 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Le chargement a nécessité le package : ggplot2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'corrplot' a été compilé avec la version R 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>corrplot 0.95 loaded</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attachement du package : 'psych'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Les objets suivants sont masqués depuis 'package:ggplot2':
-
-    %+%, alpha</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'PCDimension' a été compilé avec la version R 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Le chargement a nécessité le package : ClassDiscovery</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'ClassDiscovery' a été compilé avec la version R 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Le chargement a nécessité le package : cluster</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Le chargement a nécessité le package : oompaBase</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'oompaBase' a été compilé avec la version R 4.5.2</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Encodage des causes de décès</caption>
@@ -332,9 +290,10 @@ Attachement du package : 'psych'</code></pre>
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="mali"><span class="header-section-number">3.3.2</span> Mali :</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="rapport_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Répartition des causes de décès au Mali en 2019</figcaption>
 </figure>
 </div>
 </div>
@@ -409,14 +368,17 @@ Attachement du package : 'psych'</code></pre>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_bar(stat = "identity", fill = barfill, color = barcolor, :
-Ignoring empty aesthetic: `width`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="rapport_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -459,14 +421,14 @@ dim 30 8.507578e-06            0.001270701                         100.00000</co
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rapport_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="rapport_files/figure-html/unnamed-chunk-7-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -834,86 +796,12 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <section id="distances-au-centre-de-gravité" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="distances-au-centre-de-gravité"><span class="header-section-number">4.5</span> Distances au centre de gravité</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>       AFG        ALB        DZA        ASM        AND        AGO        ATG 
-11.0186124  0.4229618  0.2871288  0.5004108  0.4278415  1.3751298  0.4106618 
-       ARG        ARM        AUS        AUT        AZE        BHS        BHR 
- 0.2245397  0.2364335  0.3436688  0.2947515  0.2923699  3.7867457  0.9206896 
-       BGD        BRB        BLR        BEL        BLZ        BEN        BMU 
- 0.1244753  0.4553253  0.6570614  0.2666859  0.6847797  2.8360839  0.3140075 
-       BTN        BOL        BIH        BWA        BRA        BRN        BGR 
- 0.1830731  0.2776527  0.3481610  4.3607636  0.3411120  0.3709398  0.4663024 
-       BFA        BDI        KHM        CMR        CAN        CPV        CAF 
- 2.7705965  1.8899427  0.3893746  2.2438003  0.3282223  0.1480691  2.2023494 
-       TCD        CHL        CHN        COL        COM        COG        COK 
- 2.5733553  0.2215123  0.2229104  0.6693495  0.4880409  1.2330201  0.8081952 
-       CRI        CIV        HRV        CUB        CYP        CZE        COD 
- 0.2480862  3.1610372  0.3041874  0.2116228  0.2427137  0.2662594  1.5344101 
-       DNK        DJI        DMA        DOM        ECU        EGY        SLV 
- 0.3554634  1.4919263  0.2933715  0.1823240  0.3246934  0.5527479  1.1287042 
-       GNQ        ERI        EST        SWZ        ETH        FJI        FIN 
- 5.9761217  1.2173746  0.4022483  5.2912817  1.1330979  1.7324114  0.3501014 
-       FRA        GAB        GMB        GEO        DEU        GHA        GRC 
- 0.4124816  0.8241730  0.9578783  0.3795034  0.2666266  1.3489300  0.2889667 
-       GRL        GRD        GUM        GTM        GIN        GNB        GUY 
- 0.6551983  0.3765231  0.1555785  1.0903990  1.8113798  1.0342230  0.3682204 
-       HTI        HND        HUN        ISL        IND        IDN        IRN 
- 0.5275400  0.6676202  0.2909056  0.3804772  0.2330268  0.2143765  0.2330523 
-       IRQ        IRL        ISR        ITA        JAM        JPN        JOR 
- 0.4145706  0.3124754  0.3673243  0.3385784  0.5580301  0.6102439  0.2646229 
-       KAZ        KEN        KIR        KWT        KGZ        LAO        LVA 
- 0.2694207  2.2128262  0.5118338  0.2548920  0.2917457  0.1866082  0.4362540 
-       LBN        LSO        LBR        LBY        LTU        LUX        MDG 
- 0.2367886  7.0333242  2.7136471  1.2032689  0.4073237  0.2957833  1.1949838 
-       MWI        MYS        MDV        MLI        MLT        MHL        MRT 
- 1.6907897  0.2676997  0.1815389  4.4273039  0.2835632  0.2541571  1.2152936 
-       MUS        MEX        FSM        MDA        MCO        MNG        MNE 
- 1.2569252  0.7738334  0.5071467  0.4567134  0.5802645  0.5253616  0.4460994 
-       MAR        MOZ        MMR        NAM        NRU        NPL        NLD 
- 0.2394092  5.1222808  0.1397260  2.4844369  0.4188688  0.4341349  0.4036448 
-       NZL        NIC        NER        NGA        NIU        PRK        MKD 
- 0.3053203  0.5499320  3.3161250  2.6175873  0.9960723  0.1919520  0.4237715 
-       MNP        NOR        OMN        PAK        PLW        PSE        PAN 
- 0.3102363  0.3197403  1.2781076  0.7861316  0.4825045  0.2853132  0.2754461 
-       PNG        PRY        PER        PHL        POL        PRT        PRI 
- 0.5605952  0.2919292  0.3365913  0.2304716  0.3148420  0.2389322  0.4735040 
-       QAT        ROU        RUS        RWA        KNA        LCA        VCT 
- 1.4582212  0.3440166  0.4219891  0.6787026  0.5563030  0.3350844  0.4246386 
-       WSM        SMR        STP        SAU        SEN        SRB        SYC 
- 0.2719472  0.4679018  0.2350467  1.3507241  1.0034803  0.3467249  0.2444894 
-       SLE        SGP        SVK        SVN        SLB        SOM        ZAF 
- 3.3989419  0.5970133  0.2924942  0.3473947  0.2957312  2.4539609  4.9144691 
-       KOR        SSD        ESP        LKA        SDN        SUR        SWE 
- 0.3747876  2.0358129  0.2998033  0.3355098  0.3837573  0.2208763  0.2823854 
-       CHE        SYR        TWN        TJK        TZA        THA        TLS 
- 0.3319437  6.1274220  0.3507787  0.2370792  1.1669816  0.2301441  0.1788399 
-       TGO        TKL        TON        TTO        TUN        TUR        TKM 
- 1.6254659  0.9179077  0.4815556  0.8461595  0.2661818  0.1704068  0.3742251 
-       TUV        UGA        UKR        ARE        GBR        USA        VIR 
- 0.3537007  1.8556283  0.5215933  1.1741018  0.3289593  0.3665658  0.3001172 
-       URY        UZB        VUT        VEN        VNM        YEM        ZMB 
- 0.2104981  0.3320789  0.1592866  0.5190249  0.1274731  6.3094029  2.4526596 
-       ZWE 
- 2.4273186 </code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="rapport_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        C1         C2         C3         C4         C5         C6         C7 
- 2.9556066  0.5675751  0.2499869  2.3123303  7.9246353  0.2678024  2.3947903 
-        C8         C9        C10        C11        C12        C13        C14 
- 1.9728054  6.8465138  4.6497569  1.2254989  0.1189464  0.4133981  1.6587948 
-       C15        C16        C17        C18        C19        C20        C21 
- 1.3355893  0.1939155 10.2839831  1.6842943  1.5688329  0.2140124 60.8308279 
-       C22        C23        C24        C25        C26        C27        C28 
- 0.3592837  0.2987134  0.6392843  3.0937934  0.3951039  0.2959231  0.2603524 
-       C29        C30        C31 
- 0.1222531  0.3540672  1.4140545 </code></pre>
 </div>
 <div class="cell-output-display">
 <div>
