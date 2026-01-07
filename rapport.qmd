@@ -327,7 +327,7 @@ nb_axes <- nrow(pres.afc$eig)
 inertie_moyenne <- inertie_totale / nb_axes
 #inertie_moyenne
 
-pres.afc$eig
+#pres.afc$eig
 inertie_axes <- pres.afc$eig[, 1]
 barplot(
   inertie_axes,
@@ -462,8 +462,8 @@ fviz_ca_biplot(pres.afc, axes = c(4,3))
 #contributiob des lignes 
 
 
-sort(pres.afc$row$contrib[,1], T)
-sort(pres.afc$row$contrib[,2], T)
+#sort(pres.afc$row$contrib[,1], T)
+#sort(pres.afc$row$contrib[,2], T)
 
 # Avec factoextra : plus facile à interpréter 
 fviz_contrib(pres.afc, choice = "row", axes=1)
