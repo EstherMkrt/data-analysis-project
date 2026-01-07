@@ -1,24 +1,191 @@
 ---
-title: "Untitled"
-format: revealjs
+title: "Analyse factorielle des correspondances des causes de décès par pays"
+author: "Mkrtchyan, Touré"
+date: "2026"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    background-transition: fade
+    incremental: true
+    center: true
+    width: 1100
+    height: 700
+    margin: 0.1
+    title-slide-attributes:
+      data-background-color: "#f7f7f7"
+  pdf:
+    documentclass: beamer
 editor: visual
 ---
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
 
-## Bullets
+---
 
-When you click the **Render** button a document will be generated that includes:
+## Analyse exploratoire
 
--   Content authored with markdown
--   Output from executable code
+- Distribution des causes par pays
+- Comparaison visuelle des profils
+- Mise en évidence de disparités importantes
 
-## Code
+---
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Visualisation – Arménie
 
+```r
 ```{r}
-1 + 1
+#| echo: false
+#| message: false
+#| warning: false
+
+# barplot Arménie
+
+
 ```
+
+
+
+
+
+---
+
+## Comparaison des pays
+
+- Profils de mortalité très contrastés
+- Pays à faible revenu vs pays développés
+- Importance variable des maladies chroniques
+
+---
+
+## Profils ligne et colonne
+
+- Profil ligne : distribution des causes pour un pays
+- Profil colonne : répartition des pays pour une cause
+- Base de l’AFC
+
+---
+
+## Profils avec ggplot2
+
+```r
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# graphiques de profils
+```
+
+
+
+
+
+
+
+
+
+---
+
+## Test du khi-deux
+
+- Hypothèses :
+  - H₀ : indépendance pays / causes
+  - H₁ : dépendance
+- Statistique du khi-deux très élevée
+- p-value ≈ 0
+
+👉 **Rejet clair de l’hypothèse d’indépendance**
+
+---
+
+## V de Cramer
+
+- Mesure de l’intensité de la dépendance
+- Résultat obtenu :  
+  **V ≈ 0.15**
+- Dépendance **faible à modérée**
+
+👉 Résultat cohérent avec la taille de l’échantillon
+
+---
+
+## Lancement de l’AFC
+
+```r
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# AFC
+```
+
+
+
+---
+
+## Critère du bâton brisé
+
+- Sélection du nombre d’axes pertinents
+- Comparaison inertie réelle / inertie théorique
+- Conservation des premiers axes explicatifs
+
+---
+
+## Plan factoriel (axes 1 et 2)
+
+```r
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# plot AFC
+```
+
+
+
+---
+
+## Contributions des lignes (pays)
+
+- Pays les plus contributifs aux axes
+- Interprétation géographique et sanitaire
+- Opposition pays développés / pays en développement
+
+---
+
+## Contributions des colonnes (causes)
+
+- Causes dominantes sur chaque axe
+- Axes interprétables en termes épidémiologiques
+- Lecture conjointe pays–causes
+
+---
+
+## Distances au centre de gravité
+
+- Distance = atypie du profil
+- Certains pays très éloignés
+- Indicateur de spécificité sanitaire
+
+---
+
+## Conclusion
+
+- Forte dépendance statistique pays / causes
+- Intensité modérée (V de Cramer)
+- AFC très pertinente pour l’interprétation
+- Résultats cohérents avec les contextes sanitaires
+
+---
+
+## Références
+
+- Cours de statistique multidimensionnelle
+- Documentation R (`FactoMineR`, `ggplot2`)
+- Sources de données internationales (OMS, etc.)
+
+
