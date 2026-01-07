@@ -93,7 +93,7 @@ rownames(morts) <- morts[,1]
 morts <- morts[,-1]
 
 
-#| fig-cap: "Répartition des causes de décès en Arménie en 2019"
+#| fig-cap: "1) Répartition des causes de décès en Arménie en 2019"
 
 par(mar = c(6,10,4,2))
 barplot(
@@ -114,7 +114,7 @@ barplot(
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: "Répartition des causes de décès au Mali en 2019"
+#| fig-cap: "2) Répartition des causes de décès au Mali en 2019"
 
 par(mar = c(6,10,4,2))
 barplot(
@@ -134,7 +134,7 @@ barplot(
 ```{r}
 #| echo: false
 
-#| fig-cap: "Répartition des causes de décès en France en 2019"
+#| fig-cap: "3) Répartition des causes de décès en France en 2019"
 
 par(mar = c(6,10,4,2))
 barplot(
@@ -160,6 +160,9 @@ L’analyse met en évidence des profils de mortalité contrastés. En Arménie,
 Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
 
 ## Profils ligne et colonne
+
+Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
+
 
 ```{r}
 #| echo: false
@@ -191,13 +194,31 @@ profils_colonnes <- sweep(morts1, 2, somme_colonnes, "/")
 profils_colonnes <- as.data.frame(profils_colonnes)
 
 
+pays_selection <- c("ARM", "MLI", "FRA", "MOZ", "AUS", "ARG", "USA")
+
+
+
+causes_selection <- colnames(morts)[1:8]
+
+kable(
+  profils_lignes[pays_selection, causes_selection],
+  caption = "Profils lignes pour quelques pays et causes sélectionnés"
+)
+
+kable(
+  profils_colonnes[pays_selection, causes_selection],
+  caption = "Profils colonnes pour quelques pays et causes sélectionnés"
+)
+
+
 ```
 
-Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
 De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66 % (0.0066= 1563/(1563 +13+...+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
 
 ## Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
+
+Les profils lignes sont ensuite représentés graphiquement afin de faciliter l’interprétation. Le profil ligne de la France met en évidence la prédominance des maladies non infectueuses dans la structure de la mortalité, confirmant les observations issues de l’analyse par diagrammes en barres. Une comparaison des profils lignes de la France et du Mali souligne des contrastes marqués : la France présente une concentration plus forte des décès sur les maladies chroniques, tandis que le Mali affiche une part relativement plus importante de maladies infectueuses et de causes évitables. Ces différences traduisent des stades distincts de transition épidémiologique et fournissent une base pertinente pour des analyses multivariées ultérieures, telles que l’analyse des correspondances.
 
 ```{r}
 #| echo: false
@@ -258,7 +279,7 @@ ggplot(profils_deux_long, aes(x = Variable, y = Profil, fill = Pays)) +
 
 ```
 
-Les profils lignes sont ensuite représentés graphiquement afin de faciliter l’interprétation. Le profil ligne de la France met en évidence la prédominance des maladies non infectueuses dans la structure de la mortalité, confirmant les observations issues de l’analyse par diagrammes en barres. Une comparaison des profils lignes de la France et du Mali souligne des contrastes marqués : la France présente une concentration plus forte des décès sur les maladies chroniques, tandis que le Mali affiche une part relativement plus importante de maladies infectueuses et de causes évitables. Ces différences traduisent des stades distincts de transition épidémiologique et fournissent une base pertinente pour des analyses multivariées ultérieures, telles que l’analyse des correspondances.
+
 
 ## 
 
@@ -274,9 +295,21 @@ Afin de quantifier l’intensité de la liaison entre les deux variables, le coe
 
 L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Ces écarts traduisent des phénomènes d’attirance et de répulsion : un résidu standardisé positif indique qu’un pays et une cause se rencontrent plus fréquemment que prévu (attirance), tandis qu’un résidu standardisé négatif montre une occurrence moindre que prévu (répulsion). Un résidu supérieur à 2 ou inférieur à −2 est généralement considéré comme significatif.
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+ # ICI ajouter le tableau des résidus
+
+```
+
 À titre d’illustration, le Bangladesh (BGD) présente un résidu standardisé de −99,09 pour la malaria (C5), ce qui traduit une répulsion extrêmement marquée : cette cause est très fortement sous-représentée dans ce pays par rapport à ce qui serait attendu sous l’hypothèse d’indépendance. À l’inverse, l’Afghanistan (AFG) affiche un résidu standardisé très élevé (116,45) pour les troubles maternels (C8), indiquant une attirance très forte entre ce pays et cette cause de décès, largement surreprésentée par rapport au modèle d’indépendance.
 
 ## Lancement de l’AFC
+
+Pour explorer les relations entre les pays et les causes de décès, une analyse factorielle des correspondances (AFC) est réalisée. Cette méthode multivariée est particulièrement adaptée aux tableaux de contingence et permet de visualiser les dépendances entre lignes (pays) et colonnes (causes) tout en réduisant la dimensionnalité des données.
+
 
 ```{r}
 #| echo: false
@@ -290,7 +323,38 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 pres.afc <- CA(morts[1:204,])
 
 # Pour éviter la superposition des libellés 
-fviz_ca_biplot(pres.afc, repel = T)
+fviz_ca_biplot(pres.afc, repel = TRUE) +
+  ggtitle(
+    "Analyse factorielle des correspondances (AFC)",
+    subtitle = "Représentation conjointe des pays et des causes de décès (axes 1 et 2)"
+  )
+
+
+#diagramme en baton pour étudier la décroissance de l'inertie des axes
+
+
+fviz_eig(pres.afc, addlabels = TRUE) +
+  ggtitle(
+    "Décroissance de l’inertie des axes",
+    subtitle = "Valeurs propres de l’AFC"
+  )
+
+
+```
+
+
+L’AFC est appliquée aux 204 pays du tableau, considérés comme lignes actives. Les valeurs propres associées aux axes factoriels sont examinées afin de déterminer la part d’inertie expliquée par chaque axe et d’identifier le nombre d’axes significatifs à retenir. La décroissance des valeurs propres est représentée graphiquement pour faciliter l’interprétation. La somme des valeurs propres correspond à l’inertie totale du tableau, qui peut également être calculée à partir de la statistique du khi-deux normalisée par l’effectif total (Phi2). Dans les deux cas la valeur trouvée est 0.6695183.
+
+
+
+
+
+Le critère de Kaiser est utilisé pour identifier les axes factoriels dont l’inertie dépasse la moyenne qui est 0.02231728, indiquant qu’ils expliquent une proportion d’information supérieure à celle attendue par hasard. Dans cette analyse, six axes présentent une inertie supérieure à la moyenne et sont donc retenus pour l’interprétation.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 
 # Eboulis des valeures propres
@@ -299,10 +363,7 @@ fviz_ca_biplot(pres.afc, repel = T)
 
 #pres.afc$eig
 
-#diagramme en baton pour étudier la décroissance de l'inertie des axes
 
-
-fviz_eig(pres.afc, addlabels = TRUE)
 #pres.afc$eig
 
 
@@ -373,15 +434,12 @@ barplot(
 
 ```
 
-Pour explorer les relations entre les pays et les causes de décès, une analyse factorielle des correspondances (AFC) est réalisée. Cette méthode multivariée est particulièrement adaptée aux tableaux de contingence et permet de visualiser les dépendances entre lignes (pays) et colonnes (causes) tout en réduisant la dimensionnalité des données.
-
-L’AFC est appliquée aux 204 pays du tableau, considérés comme lignes actives. Les valeurs propres associées aux axes factoriels sont examinées afin de déterminer la part d’inertie expliquée par chaque axe et d’identifier le nombre d’axes significatifs à retenir. La décroissance des valeurs propres est représentée graphiquement pour faciliter l’interprétation. La somme des valeurs propres correspond à l’inertie totale du tableau, qui peut également être calculée à partir de la statistique du khi-deux normalisée par l’effectif total (Phi2). Dans les deux cas la valeur trouvée est 0.6695183.
-
-Le critère de Kaiser est utilisé pour identifier les axes factoriels dont l’inertie dépasse la moyenne qui est 0.02231728, indiquant qu’ils expliquent une proportion d’information supérieure à celle attendue par hasard. Dans cette analyse, six axes présentent une inertie supérieure à la moyenne et sont donc retenus pour l’interprétation.
 
 Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de visualiser la contribution relative de chaque axe à la structure globale des données, préparant ainsi l’interprétation des positions des pays et des causes sur les plans factoriels. Cette étape constitue un prérequis essentiel avant de produire les représentations graphiques des individus et des variables dans l’espace factoriel.
 
 ## Critère du bâton brisé pour sélectionner les axes
+
+Pour compléter l’identification des axes significatifs, le critère du bâton brisé est utilisé. Les valeurs propres observées sont ainsi mises en relation avec les proportions théoriques du bâton brisé, permettant de distinguer les axes apportant une information réelle de ceux qui ne contiennent qu’un bruit statistique.
 
 ```{r}
 #| echo: false
@@ -426,13 +484,16 @@ barplot(
 
 ```
 
-Pour compléter l’identification des axes significatifs, le critère du bâton brisé est utilisé. Les valeurs propres observées sont ainsi mises en relation avec les proportions théoriques du bâton brisé, permettant de distinguer les axes apportant une information réelle de ceux qui ne contiennent qu’un bruit statistique.
 
 La comparaison numérique indique que les axes dont l’inertie observée dépasse celle du bâton brisé sont considérés comme pertinents. Dans cette analyse, quatre axes présentent une inertie supérieure à la valeur attendue par le bâton brisé et sont donc retenus pour l’interprétation factorielle.
 
 Un diagramme comparatif illustre visuellement la sélection des axes : les barres rouges représentant l’inertie observée sont mises côte à côte avec celles du bâton brisé, représentées en bleu. Cette représentation permet de visualiser aisément quels axes dépassent le seuil et confirment leur pertinence pour l’étude des relations entre les pays et les causes de décès. Ce critère identifiant moins d’axes pertinents que le critère de Kaiser, son résultat sera privilégié pour la suite de l’analyse.
 
-## Analyse des contributions des lignes et colonnes
+## Analyse des contributions des lignes et colonnes ( il faut adapter le texte à partir d'ici)
+
+Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays.
+
+Les biplots combinant lignes et colonnes sur les premiers plans factoriels fournissent une vue d’ensemble des relations entre pays et causes. Le premier plan factoriel (axes 1 et 2) est généralement le plus informatif, mais d’autres combinaisons d’axes peuvent également révéler des dimensions secondaires de variation.
 
 ```{r}
 #| echo: false
@@ -446,18 +507,37 @@ fviz_ca_row(pres.afc, repel=T)
 
 # Plan des modalités colonnes
 
-fviz_ca_col(pres.afc, repel=T)
+fviz_ca_col(pres.afc, repel=T)+
+  ggtitle("Plan des modalités colonnes")
 
 # Premier plan factoriel
 
-fviz_ca_biplot(pres.afc, axes = c(1,2), repel = T) # meilleur plan
-fviz_ca_biplot(pres.afc, axes = c(1,3))
-fviz_ca_biplot(pres.afc, axes = c(1,3), repel = T)
+fviz_ca_biplot(pres.afc, axes = c(1,2), repel = T)+
+  ggtitle("Plan factoriel des axes 1 et 2") # meilleur plan
 
-fviz_ca_biplot(pres.afc, axes = c(1,4))
-fviz_ca_biplot(pres.afc, axes = c(3,2))
-fviz_ca_biplot(pres.afc, axes = c(4,2))
-fviz_ca_biplot(pres.afc, axes = c(4,3))
+fviz_ca_biplot(pres.afc, axes = c(1,3), repel = T))+
+  ggtitle("Plan factoriel des axes 1 et 3")
+
+fviz_ca_biplot(pres.afc, axes = c(1,4)))+
+  ggtitle("Plan factoriel des axes 1 et 4")
+
+fviz_ca_biplot(pres.afc, axes = c(3,2)))+
+  ggtitle("Plan factoriel des axes 3 et 2")
+
+fviz_ca_biplot(pres.afc, axes = c(4,2)))+
+  ggtitle("Plan factoriel des axes 4 et 2")
+
+fviz_ca_biplot(pres.afc, axes = c(4,3)))+
+  ggtitle("Plan factoriel des axes 4 et 3")
+
+```
+
+Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
 #contributiob des lignes 
 
@@ -466,10 +546,18 @@ fviz_ca_biplot(pres.afc, axes = c(4,3))
 #sort(pres.afc$row$contrib[,2], T)
 
 # Avec factoextra : plus facile à interpréter 
-fviz_contrib(pres.afc, choice = "row", axes=1)
-fviz_contrib(pres.afc, choice = "row", axes=2)
-fviz_contrib(pres.afc, choice = "row", axes=3)
-fviz_contrib(pres.afc, choice = "row", axes=4)
+fviz_contrib(pres.afc, choice = "row", axes=1)+
+  ggtitle("Contribution des pays pour l'axe 1")
+
+fviz_contrib(pres.afc, choice = "row", axes=2)+
+  ggtitle("Contribution des pays pour l'axe 2")
+
+fviz_contrib(pres.afc, choice = "row", axes=3)+
+  ggtitle("Contribution des pays pour l'axe ")
+
+fviz_contrib(pres.afc, choice = "row", axes=4)+
+  ggtitle("Contribution des pays pour l'axe 4")
+
 
 
 
@@ -483,16 +571,34 @@ fviz_contrib(pres.afc, choice = "row", axes=4)
 #sort(pres.afc$col$contrib[,2], T)
 
 # Avec factoextra : plus facile à interpréter
-fviz_contrib(pres.afc, choice = "col", axes=1)
-fviz_contrib(pres.afc, choice = "col", axes=2)
-fviz_contrib(pres.afc, choice = "col", axes=3) 
-fviz_contrib(pres.afc, choice = "col", axes=4) 
+
+fviz_contrib(pres.afc, choice = "col", axes=1)+
+  ggtitle("Contribution des causes de mortalité pour l'axe 1")
+
+fviz_contrib(pres.afc, choice = "col", axes=2)+
+  ggtitle("Contribution des causes de mortalité pour l'axe 2")
+
+fviz_contrib(pres.afc, choice = "col", axes=3)+
+  ggtitle("Contribution des causes de mortalité pour l'axe 3")
+
+fviz_contrib(pres.afc, choice = "col", axes=4)+
+  ggtitle("Contribution des causes de mortalité pour l'axe 4")
+
+```
+
+La qualité de représentation de chaque modalité est évaluée à l’aide du cos2, indiquant la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités avec un cos2 élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Des diagrammes filtrés sur le cos2 permettent de visualiser clairement les pays et causes les mieux représentés, tout en réduisant l’encombrement visuel des graphiques.
 
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
 # Qualité de représentation
 
+############ DONNER DES TITRES 
 
-# Plan des modalités lignes (row) ou colonnes (col) selon les Qltés de représentation
+
+# Plan des modalités lignes (row) ou colonnes (col) selon les Qltés de représentation IL FAUT FAIRE DES CHOIX ICI
 
 fviz_ca_row(pres.afc, col.row ="cos2", repel = T) 
 fviz_ca_col(pres.afc, col.col="cos2", repel = T) 
@@ -506,17 +612,14 @@ fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
 ```
 
-Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays.
-
-Les biplots combinant lignes et colonnes sur les premiers plans factoriels fournissent une vue d’ensemble des relations entre pays et causes. Le premier plan factoriel (axes 1 et 2) est généralement le plus informatif, mais d’autres combinaisons d’axes peuvent également révéler des dimensions secondaires de variation.
-
-Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats.
-
-La qualité de représentation de chaque modalité est évaluée à l’aide du cos2, indiquant la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités avec un cos2 élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Des diagrammes filtrés sur le cos2 permettent de visualiser clairement les pays et causes les mieux représentés, tout en réduisant l’encombrement visuel des graphiques.
 
 Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.
 
 ## Distances au centre de gravité
+
+L’AFC permet également de calculer la distance de chaque pays et de chaque cause au centre de gravité (barycentre) de l’ensemble des données. Cette distance est obtenue en rapportant l’inertie d’une modalité à sa masse, ce qui fournit une mesure de l’écart par rapport au profil moyen. Les pays dont la distance est faible possèdent un profil proche de la moyenne, tandis que ceux ayant une distance élevée présentent des profils atypiques ou fortement différenciés.
+
+La visualisation des distances au barycentre, par diagrammes en barres verticales ou horizontales, met en évidence les pays dont les profils sont les plus représentatifs et ceux qui s’écartent le plus du centre de gravité. Cette information est utile pour identifier les pays ou causes présentant des caractéristiques particulières et guide l’interprétation des plans factoriels précédemment étudiés.
 
 ```{r}
 #| echo: false
@@ -566,9 +669,6 @@ ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
 
 ```
 
-L’AFC permet également de calculer la distance de chaque pays et de chaque cause au centre de gravité (barycentre) de l’ensemble des données. Cette distance est obtenue en rapportant l’inertie d’une modalité à sa masse, ce qui fournit une mesure de l’écart par rapport au profil moyen. Les pays dont la distance est faible possèdent un profil proche de la moyenne, tandis que ceux ayant une distance élevée présentent des profils atypiques ou fortement différenciés.
-
-La visualisation des distances au barycentre, par diagrammes en barres verticales ou horizontales, met en évidence les pays dont les profils sont les plus représentatifs et ceux qui s’écartent le plus du centre de gravité. Cette information est utile pour identifier les pays ou causes présentant des caractéristiques particulières et guide l’interprétation des plans factoriels précédemment étudiés.
 
 # Conclusion
 
