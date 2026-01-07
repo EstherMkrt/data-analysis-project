@@ -47,6 +47,7 @@ library(psych)
 library(skimr)
 library(PCDimension)
 
+
 library(knitr)
 
 codage <- read.csv("codage_causes.csv")
@@ -515,19 +516,19 @@ fviz_ca_col(pres.afc, repel=T)+
 fviz_ca_biplot(pres.afc, axes = c(1,2), repel = T)+
   ggtitle("Plan factoriel des axes 1 et 2") # meilleur plan
 
-fviz_ca_biplot(pres.afc, axes = c(1,3), repel = T))+
+fviz_ca_biplot(pres.afc, axes = c(1,3), repel = T)+
   ggtitle("Plan factoriel des axes 1 et 3")
 
-fviz_ca_biplot(pres.afc, axes = c(1,4)))+
+fviz_ca_biplot(pres.afc, axes = c(1,4))+
   ggtitle("Plan factoriel des axes 1 et 4")
 
-fviz_ca_biplot(pres.afc, axes = c(3,2)))+
+fviz_ca_biplot(pres.afc, axes = c(3,2))+
   ggtitle("Plan factoriel des axes 3 et 2")
 
-fviz_ca_biplot(pres.afc, axes = c(4,2)))+
+fviz_ca_biplot(pres.afc, axes = c(4,2))+
   ggtitle("Plan factoriel des axes 4 et 2")
 
-fviz_ca_biplot(pres.afc, axes = c(4,3)))+
+fviz_ca_biplot(pres.afc, axes = c(4,3))+
   ggtitle("Plan factoriel des axes 4 et 3")
 
 ```
