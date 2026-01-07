@@ -58,6 +58,8 @@ kable(
 
 ## Chargement des données
 
+
+
 La première étape de l'analyse consiste à charger les librairies nécessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
 
 Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d'identification des lignes et elle est ensuite supprimée, afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.
@@ -66,14 +68,25 @@ Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de 
 
 ## 
 
-
-
 ## Visualisation des données par barplots
 
 ### Arménie :
 
 ```{r}
 #| echo: false
+
+# importation du jeu de données 
+
+morts <- read.csv("cleaned_data.csv", header = TRUE, sep = ",")
+
+# Déclaration de la colonne Country comme identificateur des individus
+
+rownames(morts) <- morts[,1]
+
+# Suppression de la variable country
+
+morts <- morts[,-1]
+
 
 #| fig-cap: "Répartition des causes de décès en Arménie en 2019"
 
@@ -141,8 +154,6 @@ L’analyse met en évidence des profils de mortalité contrastés. En Arménie,
 Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
 
 ## Profils ligne et colonne
-
-
 
 Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
@@ -215,7 +226,6 @@ Les profils lignes sont ensuite représentés graphiquement afin de faciliter l�
 # Analyses avancées ( AFC et Tests)
 
 ## Test du khi-deux et V de Cramer
-
 
 Afin d’évaluer statistiquement l’existence d’un lien entre les pays et les causes de décès, un test du khi-deux d’indépendance est réalisé à partir du tableau de contingence. L’hypothèse nulle H0 suppose l’indépendance entre le pays et la cause de décès, tandis que l’hypothèse alternative H1 postule l’existence d’une dépendance entre ces deux variables.
 
