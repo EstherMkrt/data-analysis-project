@@ -33,7 +33,9 @@ Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l
 Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.
 
 ```{r}
-#| echo: false
+#| echo: false 
+#| warning: false
+#| message: false
 
 # chargement des librairies utiles
 
@@ -74,6 +76,9 @@ Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de 
 
 ```{r}
 #| echo: false
+#| warning: false
+#| message: false
+
 
 # importation du jeu de données 
 
@@ -107,7 +112,8 @@ barplot(
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 #| fig-cap: "Répartition des causes de décès au Mali en 2019"
 
 par(mar = c(6,10,4,2))
@@ -157,7 +163,8 @@ Cette analyse descriptive constitue une première étape exploratoire. Elle perm
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 # Tableau profil ligne
 
 
@@ -194,7 +201,8 @@ De manière complémentaire, les profils colonnes décrivent, pour chaque cause 
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 # Représentation graphique des profils
 
 
@@ -272,13 +280,18 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 #Lancement de l'AFC avec R
 
 
 
 # AFC avec lignes actives = les 204 pays  
 pres.afc <- CA(morts[1:204,])
+
+# Pour éviter la superposition des libellés 
+fviz_ca_biplot(pres.afc, repel = T)
+
 
 # Eboulis des valeures propres
 
@@ -372,7 +385,8 @@ Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 # critère du baton brisé
 
 
@@ -422,7 +436,8 @@ Un diagramme comparatif illustre visuellement la sélection des axes : les barre
 
 ```{r}
 #| echo: false
-
+#| warning: false
+#| message: false
 # Plan des modalités lignes
 
 fviz_ca_row(pres.afc, repel=T)
@@ -506,13 +521,15 @@ Cette analyse graphique et quantitative des contributions et de la qualité de r
 ```{r}
 #| echo: false
 
+#| warning: false
+#| message: false
 # Calcul et interprétation des distances au CG pour les pays...
 
 
 
 # En déduire les distances aux CG : inertia/m_i
 
-pres.afc$row$inertia/pres.afc$call$marge.row
+#pres.afc$row$inertia/pres.afc$call$marge.row
 barplot(sort(pres.afc$row$inertia/pres.afc$call$marge.row), las=2, cex.names=0.6)
 
 # Quel pays a le profil le plus proche du profil moyen ?
@@ -524,7 +541,7 @@ barplot(sort(pres.afc$row$inertia/pres.afc$call$marge.row), las=2, cex.names=0.6
 # La distance évalue le caractère +/- atypique d'un profil en regard du profil moyen
 
 # Pour les colonnes
-pres.afc$col$inertia/pres.afc$call$marge.col
+#pres.afc$col$inertia/pres.afc$call$marge.col
 barplot(sort(pres.afc$col$inertia/pres.afc$call$marge.col), las=2, cex.names=0.6)
 
 

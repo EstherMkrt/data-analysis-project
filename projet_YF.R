@@ -206,6 +206,10 @@ resu.chi2$expected["MLI",] / sum(resu.chi2$expected["MLI",])
 # AFC avec lignes actives = les 204 pays  
 pres.afc <- CA(morts[1:204,])
 
+# Pour éviter la superposition des libellés 
+fviz_ca_biplot(pres.afc, repel = T)
+
+
 # Eboulis des valeures propres
 
 pres.afc$eig
