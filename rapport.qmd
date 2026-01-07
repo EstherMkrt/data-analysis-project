@@ -155,6 +155,37 @@ Cette analyse descriptive constitue une première étape exploratoire. Elle perm
 
 ## Profils ligne et colonne
 
+```{r}
+#| echo: false
+
+# Tableau profil ligne
+
+
+
+morts1 <- data.matrix(morts)
+
+profils_lignes <- morts1 / rowSums(morts1)
+
+profils_lignes <- as.data.frame(profils_lignes)
+
+
+# Tableau profil colonne
+
+# Passage en matrice numérique
+morts1 <- data.matrix(morts)
+
+# Somme des colonnes
+somme_colonnes <- colSums(morts1)
+
+# Profils colonnes
+profils_colonnes <- sweep(morts1, 2, somme_colonnes, "/")
+
+# Conversion en data.frame (optionnel)
+profils_colonnes <- as.data.frame(profils_colonnes)
+
+
+```
+
 Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
 De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66 % (0.0066= 1563/(1563 +13+...+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
