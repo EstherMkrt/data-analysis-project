@@ -35,6 +35,16 @@ Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviatio
 ```{r}
 #| echo: false
 
+# chargement des librairies utiles
+
+library(FactoMineR)
+library(factoextra)
+library(corrplot)
+library(ggplot2)
+library(psych)
+library(skimr)
+library(PCDimension)
+
 library(knitr)
 
 codage <- read.csv("codage_causes.csv")
@@ -56,32 +66,14 @@ Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de 
 
 ## 
 
-```{r}
-# chargement des librairies utiles
 
-library(FactoMineR)
-library(factoextra)
-library(corrplot)
-library(ggplot2)
-library(psych)
-library(skimr)
-library(PCDimension)
-
-morts <- read.csv("cleaned_data.csv", header = TRUE, sep = ",")
-
-rownames(morts) <- morts[,1]
-
-morts <- morts[,-1]
-
-#View(morts)
-
-```
 
 ## Visualisation des données par barplots
 
 ### Arménie :
 
 ```{r}
+#| echo: false
 
 #| fig-cap: "Répartition des causes de décès en Arménie en 2019"
 
@@ -101,6 +93,7 @@ barplot(
 ### Mali :
 
 ```{r}
+#| echo: false
 
 #| fig-cap: "Répartition des causes de décès au Mali en 2019"
 
@@ -120,6 +113,7 @@ barplot(
 ### France :
 
 ```{r}
+#| echo: false
 
 #| fig-cap: "Répartition des causes de décès en France en 2019"
 
@@ -148,44 +142,7 @@ Cette analyse descriptive constitue une première étape exploratoire. Elle perm
 
 ## Profils ligne et colonne
 
-```{r}
-# Tableau profil ligne
 
-
-
-morts1 <- data.matrix(morts)
-
-profils_lignes <- morts1 / rowSums(morts1)
-
-profils_lignes <- as.data.frame(profils_lignes)
-
-View(profils_lignes)
-
-rowSums(profils_lignes)
-
-
-
-# Tableau profil colonne
-
-# Passage en matrice numérique
-morts1 <- data.matrix(morts)
-
-# Somme des colonnes
-somme_colonnes <- colSums(morts1)
-
-# Profils colonnes
-profils_colonnes <- sweep(morts1, 2, somme_colonnes, "/")
-
-# Conversion en data.frame (optionnel)
-profils_colonnes <- as.data.frame(profils_colonnes)
-
-# Vérification : chaque colonne doit sommer à 1
-colSums(profils_colonnes)
-View(profils_colonnes)
-
-
-
-```
 
 Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
@@ -194,6 +151,7 @@ De manière complémentaire, les profils colonnes décrivent, pour chaque cause 
 ## Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
 
 ```{r}
+#| echo: false
 
 # Représentation graphique des profils
 
@@ -258,48 +216,6 @@ Les profils lignes sont ensuite représentés graphiquement afin de faciliter l�
 
 ## Test du khi-deux et V de Cramer
 
-```{r}
-# Réalisation du test du khi-deux
-
-# H0 : les pays et les causes sont indépendants VS H1 : il y a dépendance
-
-resu.chi2 <- chisq.test(morts[1:204,])
-
-resu.chi2 <- suppressWarnings(chisq.test(morts[1:204, ]))
-
-names(resu.chi2)
-summary(resu.chi2)
-
-resu.chi2$statistic
-
-resu.chi2$p.value
-
-# P-value 
-
-
-# la structure du tableau ne permet pas vraiment de faire un test du ki deux, 
-# on peut directement faire une AFC pour explorer les dépendances
-
-
-# V Cramer
-tot <- sum(morts[1:204,])
-sqrt(resu.chi2$statistic/(30*tot))
-
-# On obtient 0.1493, laison faible
-
-# effectifs attendus sous hyp d'indépendance : effectif théorique
-resu.chi2$expected
-
-# Residus standardisés
-resu.chi2$stdres["FRA",]
-
-resu.chi2$stdres
-
-# Sous l'hyp H0 d'indépendance, les profils attendus pour différents départements sont égaux
-resu.chi2$expected["FRA",] / sum(resu.chi2$expected["FRA",])
-resu.chi2$expected["MLI",] / sum(resu.chi2$expected["MLI",])
-
-```
 
 Afin d’évaluer statistiquement l’existence d’un lien entre les pays et les causes de décès, un test du khi-deux d’indépendance est réalisé à partir du tableau de contingence. L’hypothèse nulle H0 suppose l’indépendance entre le pays et la cause de décès, tandis que l’hypothèse alternative H1 postule l’existence d’une dépendance entre ces deux variables.
 
@@ -314,9 +230,11 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 ## Lancement de l’AFC
 
 ```{r}
+#| echo: false
+
 #Lancement de l'AFC avec R
 
-library(FactoMineR)
+
 
 # AFC avec lignes actives = les 204 pays  
 pres.afc <- CA(morts[1:204,])
@@ -324,14 +242,14 @@ pres.afc <- CA(morts[1:204,])
 # Eboulis des valeures propres
 
 
-library(factoextra)
-pres.afc$eig
+
+#pres.afc$eig
 
 #diagramme en baton pour étudier la décroissance de l'inertie des axes
 
 
 fviz_eig(pres.afc, addlabels = TRUE)
-pres.afc$eig
+#pres.afc$eig
 
 
 # Inertie totale
@@ -340,10 +258,10 @@ pres.afc$eig
 tot <- sum(morts[1:204,])
 
 # Inertie totale = D2/n
-resu.chi2$statistic/tot # La statistique D2/n est également appelée Phi2
+#resu.chi2$statistic/tot # La statistique D2/n est également appelée Phi2
 
 # Inertie totale = somme des valeurs propres
-sum(pres.afc$eig[,1])
+#sum(pres.afc$eig[,1])
 
 # On détermine le nombre d'axes intéressants de 2 façons différentes :
 
@@ -390,7 +308,7 @@ barplot(
 
 #calcul de la valeur propremoyenne 
 
-mean(pres.afc$eig[,1])
+#mean(pres.afc$eig[,1])
 
 # on note six axes dont l'inertie est supérieur
 
@@ -412,16 +330,11 @@ Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de
 ## Critère du bâton brisé pour sélectionner les axes
 
 ```{r}
+#| echo: false
+
 # critère du baton brisé
 
 
-
-
-
-
-
-#  Charger la librairie nécessaire
-library(PCDimension)
 
 #  Nombre d’axes factoriels (axes non nuls)
 nb_axes <- nrow(pres.afc$eig)
@@ -440,7 +353,7 @@ bs <- 100 * brokenStick(1:nb_axes, nb_axes)
 vp > bs
 
 # Axes retenus selon le critère du bâton brisé
-which(vp > bs)
+#which(vp > bs)
 
 
 barplot(
@@ -467,16 +380,16 @@ Un diagramme comparatif illustre visuellement la sélection des axes : les barre
 ## Analyse des contributions des lignes et colonnes
 
 ```{r}
+#| echo: false
+
 # Plan des modalités lignes
 
-fviz_ca_row(pres.afc)
 fviz_ca_row(pres.afc, repel=T)
-?fviz_ca_row
+
 
 
 # Plan des modalités colonnes
 
-fviz_ca_col(pres.afc)
 fviz_ca_col(pres.afc, repel=T)
 
 # Premier plan factoriel
@@ -506,26 +419,6 @@ fviz_contrib(pres.afc, choice = "row", axes=4)
 
 #Diagramme illisible à cause du nombre de pays(204)
 #Triage par ordre décroissant des contributions, puis séléction des 10 premiers
-
-# Axe 1 : NAG
-contrib_dim1 <- pres.afc$row$contrib[, 1]
-contrib_dim1_sorted <- sort(contrib_dim1, decreasing = TRUE)
-head(contrib_dim1_sorted, 10)
-
-# Axe 2 : ZAF
-contrib_dim1 <- pres.afc$row$contrib[, 2]
-contrib_dim1_sorted <- sort(contrib_dim1, decreasing = TRUE)
-head(contrib_dim1_sorted, 10)
-
-# Axe 3 : AFG
-contrib_dim1 <- pres.afc$row$contrib[, 3]
-contrib_dim1_sorted <- sort(contrib_dim1, decreasing = TRUE)
-head(contrib_dim1_sorted, 10)
-
-# Axe 4 : IND
-contrib_dim1 <- pres.afc$row$contrib[, 4]
-contrib_dim1_sorted <- sort(contrib_dim1, decreasing = TRUE)
-head(contrib_dim1_sorted, 10)
 
 
 # Contributions des causes
@@ -570,15 +463,11 @@ Cette analyse graphique et quantitative des contributions et de la qualité de r
 ## Distances au centre de gravité
 
 ```{r}
+#| echo: false
+
 # Calcul et interprétation des distances au CG pour les pays...
 
 
-# Les inerties sont données par 
-
-pres.afc$row$inertia
-
-# Sachant que les masses des individus sont données par
-pres.afc$call$marge.row
 
 # En déduire les distances aux CG : inertia/m_i
 
@@ -586,9 +475,9 @@ pres.afc$row$inertia/pres.afc$call$marge.row
 barplot(sort(pres.afc$row$inertia/pres.afc$call$marge.row), las=2, cex.names=0.6)
 
 # Quel pays a le profil le plus proche du profil moyen ?
-which.min(pres.afc$row$inertia/pres.afc$call$marge.row)
+#which.min(pres.afc$row$inertia/pres.afc$call$marge.row)
 # Quel pays a le profil le plus éloigné du profil moyen ?
-which.max(pres.afc$row$inertia/pres.afc$call$marge.row)
+#which.max(pres.afc$row$inertia/pres.afc$call$marge.row)
 
 # Interprétation de ces distances 
 # La distance évalue le caractère +/- atypique d'un profil en regard du profil moyen
@@ -601,7 +490,7 @@ barplot(sort(pres.afc$col$inertia/pres.afc$call$marge.col), las=2, cex.names=0.6
 # Distances représentées avec ggplot
 
 dafr <- data.frame(distance = pres.afc$row$inertia/pres.afc$call$marge.row)
-summary(dafr)
+#summary(dafr)
 
 # Barres verticales
 ggplot(dafr, aes(x=reorder(row.names(dafr), -distance), y=distance)) +

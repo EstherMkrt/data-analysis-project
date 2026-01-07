@@ -202,22 +202,18 @@ resu.chi2$expected["MLI",] / sum(resu.chi2$expected["MLI",])
 
 #Lancement de l'AFC avec R
 
-library(FactoMineR)
 
 # AFC avec lignes actives = les 204 pays  
 pres.afc <- CA(morts[1:204,])
 
 # Eboulis des valeures propres
 
-
-library(factoextra)
 pres.afc$eig
 
 #diagramme en baton pour étudier la décroissance de l'inertie des axes
 
 
 fviz_eig(pres.afc, addlabels = TRUE)
-pres.afc$eig
 
 
 # Inertie totale
@@ -286,14 +282,6 @@ mean(pres.afc$eig[,1])
 
 # critère du baton brisé
 
-
-
-
-
-
-
-#  Charger la librairie nécessaire
-library(PCDimension)
 
 #  Nombre d’axes factoriels (axes non nuls)
 nb_axes <- nrow(pres.afc$eig)
