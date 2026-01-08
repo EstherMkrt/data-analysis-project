@@ -615,9 +615,11 @@ Cette analyse graphique et quantitative des contributions et de la qualité de r
 
 ## Distances au centre de gravité
 
-L’AFC permet également de calculer la distance de chaque pays et de chaque cause au centre de gravité (barycentre) de l’ensemble des données. Cette distance est obtenue en rapportant l’inertie d’une modalité à sa masse, ce qui fournit une mesure de l’écart par rapport au profil moyen. Les pays dont la distance est faible possèdent un profil proche de la moyenne, tandis que ceux ayant une distance élevée présentent des profils atypiques ou fortement différenciés.
+L’AFC permet de mesurer l’écart de chaque pays ou cause par rapport au profil moyen à travers la distance au centre de gravité (barycentre). Cette distance est calculée en rapportant l’inertie de chaque modalité à sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente la distance la plus faible (≈0,12), ce qui signifie que son profil est très proche du profil moyen, tandis que l’Afghanistan (AFG) a la distance la plus élevée (≈11,02), indiquant un profil fortement atypique.
 
-La visualisation des distances au barycentre, par diagrammes en barres verticales ou horizontales, met en évidence les pays dont les profils sont les plus représentatifs et ceux qui s’écartent le plus du centre de gravité. Cette information est utile pour identifier les pays ou causes présentant des caractéristiques particulières et guide l’interprétation des plans factoriels précédemment étudiés.
+Pour les causes, certaines présentent également des écarts importants : la cause C21 se distingue par une distance très élevée (≈60,83), ce qui suggère un profil extrêmement spécifique par rapport aux autres causes. Ces mesures permettent ainsi de détecter les pays et causes qui se rapprochent le plus du profil moyen et ceux qui s’en écartent fortement.
+
+La visualisation de ces distances, sous forme de diagrammes en barres verticales ou horizontales, facilite l’interprétation. Les barres les plus courtes correspondent aux profils proches de la moyenne, tandis que les barres plus longues signalent des profils atypiques. Cette représentation claire guide l’interprétation des plans factoriels précédemment étudiés et aide à identifier les modalités les plus influentes ou singulières dans l’analyse.
 
 ```{r}
 #| echo: false

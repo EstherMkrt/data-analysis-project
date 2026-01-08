@@ -362,7 +362,7 @@ fviz_contrib(pres.afc, choice = "row", axes=4)
 #Diagramme illisible à cause du nombre de pays(204)
 #Triage par ordre décroissant des contributions, puis séléction des 10 premiers
 
-# Axe 1 : NAG
+# Axe 1 : NGA
 contrib_dim1 <- pres.afc$row$contrib[, 1]
 contrib_dim1_sorted <- sort(contrib_dim1, decreasing = TRUE)
 head(contrib_dim1_sorted, 10)
