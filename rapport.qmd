@@ -46,8 +46,6 @@ library(ggplot2)
 library(psych)
 library(skimr)
 library(PCDimension)
-
-
 library(knitr)
 
 codage <- read.csv("codage_causes.csv")
@@ -192,7 +190,7 @@ profils_colonnes <- sweep(morts1, 2, somme_colonnes, "/")
 profils_colonnes <- as.data.frame(profils_colonnes)
 
 
-pays_selection <- c("ARM", "MLI", "FRA", "MOZ", "AUS", "ARG", "USA")
+pays_selection <- c("AFG", "ARM", "MLI", "FRA", "MOZ", "AUS", "ARG", "USA")
 
 
 
@@ -211,7 +209,7 @@ kable(
 
 ```
 
-De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66 % (0.0066= 1563/(1563 +13+...+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
+De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66% (0.0066= 1563/(1563 +13+...+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
 
 ## Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
 
@@ -478,11 +476,10 @@ Un diagramme comparatif illustre visuellement la sélection des axes : les barre
 
 ## Analyse des contributions des lignes et colonnes 
 
-Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, comme Djibouti (DJI) et le Congo (COG), tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays. Par exemple, les causes C8 (maternal disorder), C14 et C18 apparaissent proches sur le graphique, suggérant qu’elles sont présentes dans des proportions comparables dans les mêmes pays. À l’inverse, la cause malaria (C5), très éloignée de l’origine et des autres modalités, présente un profil fortement spécifique, caractéristique d’un nombre limité de pays.
+Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, comme Djibouti et le Congo, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays. Par exemple, les troubles néonatals (C14), troubles maternels (C8) et maladies diarrhéiques(C18) apparaissent proches sur le graphique, suggérant qu’elles sont présentes dans des proportions comparables dans les mêmes pays. À l’inverse, la malaria (C5), très éloignée de l’origine et des autres modalités, présente un profil fortement spécifique, caractéristique d’un nombre limité de pays.
 
-Les biplots combinant simultanément les modalités des lignes (pays) et des colonnes (causes) permettent de visualiser les relations entre pays et causes de décès sur différents plans factoriels. Le premier plan factoriel, défini par les axes 1 et 2, est le plus informatif, concentrant une part importante de l’inertie totale avec 43 % pour l’axe 1 et 13,2 % pour l’axe 2. Il permet d’identifier les groupes de pays aux profils de mortalité similaires ainsi que les causes de décès les plus structurantes.
 
-Les plans factoriels secondaires, explorés grâce aux combinaisons d’axes 1-3, 1-4, 3-2, 4-2 et 4-3, apportent des informations complémentaires sur les dimensions moins dominantes. Par exemple, le plan 1-3 explique 43 % et 10,5 % de l’inertie, le plan 1-4 contribue à 43 % et 8,7 %, et les autres plans permettent de mettre en évidence des variations supplémentaires entre pays et causes de décès. L’option repel = T utilisée dans les biplots améliore la lisibilité en évitant le chevauchement des étiquettes. L’analyse combinée de ces différents plans factoriels permet ainsi de mettre en évidence à la fois les structures principales et les relations secondaires dans les données.
+
 
 ```{r}
 #| echo: false
@@ -504,6 +501,20 @@ fviz_ca_col(pres.afc, repel=T)+
 fviz_ca_biplot(pres.afc, axes = c(1,2), repel = T)+
   ggtitle("Plan factoriel des axes 1 et 2") # meilleur plan
 
+```
+
+
+
+Les biplots combinant simultanément les modalités des lignes (pays) et des colonnes (causes) permettent de visualiser les relations entre pays et causes de décès sur différents plans factoriels. Le premier plan factoriel, défini par les axes 1 et 2, est le plus informatif, concentrant une part importante de l’inertie totale avec 43 % pour l’axe 1 et 13,2 % pour l’axe 2. Il permet d’identifier les groupes de pays aux profils de mortalité similaires ainsi que les causes de décès les plus structurantes.
+
+Les plans factoriels secondaires, explorés grâce aux combinaisons d’axes 1-3, 1-4, 3-2, 4-2 et 4-3, apportent des informations complémentaires sur les dimensions moins dominantes. Par exemple, le plan 1-3 explique 43 % et 10,5 % de l’inertie, le plan 1-4 contribue à 43 % et 8,7 %, et les autres plans permettent de mettre en évidence des variations supplémentaires entre pays et causes de décès. L’option repel = T utilisée dans les biplots améliore la lisibilité en évitant le chevauchement des étiquettes. L’analyse combinée de ces différents plans factoriels permet ainsi de mettre en évidence à la fois les structures principales et les relations secondaires dans les données.
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
 fviz_ca_biplot(pres.afc, axes = c(1,3), repel = T)+
   ggtitle("Plan factoriel des axes 1 et 3")
 
@@ -521,7 +532,7 @@ fviz_ca_biplot(pres.afc, axes = c(4,3))+
 
 ```
 
-Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats. Sur l’axe 1, le Nigeria (NGA, ≈ 20 %), la Chine et le Mozambique sont les principaux contributeurs, tandis que la cause C5 domine parmi les causes de décès (≈ 21 %). L’axe 2 est fortement influencé par l’Afrique du Sud (ZAF, 33,8 %) et la cause C9 (≈ 68 %). L’axe 3 met en avant l’Afghanistan (AFG, 50,9 %) et la cause C21 (plus de 80 %), et l’axe 4 est porté par l’Inde (IND, 24,2 %) et la cause C5 (plus de 40 %).
+Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats. Sur l’axe 1, le Nigeria (NGA, ≈20%), la Chine et le Mozambique sont les principaux contributeurs, tandis que la malaria (C5) domine parmi les causes de décès (≈21%). L’axe 2 est fortement influencé par l’Afrique du Sud (ZAF, 33,8%) et le VIH (C9) (≈68%). L’axe 3 met en avant l’Afghanistan (AFG, 50,9%) et les conflits et terrorisme C21 (plus de 80%), et l’axe 4 est porté par l’Inde (IND, 24,2%) et la malaria (plus de 40%).
 
 ```{r}
 #| echo: false
@@ -593,7 +604,7 @@ fviz_ca_col(pres.afc, col.col="cos2", repel = T)
 fviz_ca_biplot(pres.afc, col.col="cos2", repel = T)
 
 # En filtrant sur un cos2 > 0.7
-fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 0.5), repel = T)
+fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 0.7), repel = T)
 # En filtrant sur les 20 meilleurs cos2
 fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
