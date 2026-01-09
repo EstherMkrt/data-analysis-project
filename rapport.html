@@ -56,12 +56,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#chargement-des-données" id="toc-chargement-des-données" class="nav-link" data-scroll-target="#chargement-des-données"><span class="header-section-number">3.1</span> Chargement des données</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">3.2</span> </a></li>
-  <li><a href="#visualisation-des-données-par-barplots" id="toc-visualisation-des-données-par-barplots" class="nav-link" data-scroll-target="#visualisation-des-données-par-barplots"><span class="header-section-number">3.3</span> Visualisation des données par barplots</a>
-  <ul class="collapse">
-  <li><a href="#arménie" id="toc-arménie" class="nav-link" data-scroll-target="#arménie"><span class="header-section-number">3.3.1</span> Arménie :</a></li>
-  <li><a href="#mali" id="toc-mali" class="nav-link" data-scroll-target="#mali"><span class="header-section-number">3.3.2</span> Mali :</a></li>
-  <li><a href="#france" id="toc-france" class="nav-link" data-scroll-target="#france"><span class="header-section-number">3.3.3</span> France :</a></li>
-  </ul></li>
+  <li><a href="#visualisation-des-données-par-barplots" id="toc-visualisation-des-données-par-barplots" class="nav-link" data-scroll-target="#visualisation-des-données-par-barplots"><span class="header-section-number">3.3</span> Visualisation des données par barplots</a></li>
   <li><a href="#comparaison-de-pays" id="toc-comparaison-de-pays" class="nav-link" data-scroll-target="#comparaison-de-pays"><span class="header-section-number">3.4</span> Comparaison de pays</a></li>
   <li><a href="#profils-ligne-et-colonne" id="toc-profils-ligne-et-colonne" class="nav-link" data-scroll-target="#profils-ligne-et-colonne"><span class="header-section-number">3.5</span> Profils ligne et colonne</a></li>
   <li><a href="#comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" id="toc-comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" class="nav-link" data-scroll-target="#comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2"><span class="header-section-number">3.6</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></a></li>
@@ -76,9 +71,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#distances-au-centre-de-gravité" id="toc-distances-au-centre-de-gravité" class="nav-link" data-scroll-target="#distances-au-centre-de-gravité"><span class="header-section-number">4.5</span> Distances au centre de gravité</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5</span> Conclusion</a></li>
-  <li><a href="#références" id="toc-références" class="nav-link" data-scroll-target="#références"><span class="header-section-number">6</span> Références</a>
+  <li><a href="#annexe" id="toc-annexe" class="nav-link" data-scroll-target="#annexe"><span class="header-section-number">6</span> Annexe</a>
   <ul class="collapse">
-  <li><a href="#articles-manuels-r-sources-des-données" id="toc-articles-manuels-r-sources-des-données" class="nav-link" data-scroll-target="#articles-manuels-r-sources-des-données"><span class="header-section-number">6.1</span> Articles, manuels R, sources des données</a></li>
+  <li><a href="#source-du-jeu-de-données-initiale" id="toc-source-du-jeu-de-données-initiale" class="nav-link" data-scroll-target="#source-du-jeu-de-données-initiale"><span class="header-section-number">6.1</span> Source du jeu de données initiale</a></li>
+  <li><a href="#tableau-de-lencodage-dzs-différentes-causes-de-décès" id="toc-tableau-de-lencodage-dzs-différentes-causes-de-décès" class="nav-link" data-scroll-target="#tableau-de-lencodage-dzs-différentes-causes-de-décès"><span class="header-section-number">6.2</span> Tableau de l’encodage dzs différentes causes de décès</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="rapport.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -118,147 +114,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 data-number="2"><span class="header-section-number">2</span> Analyse factorielle des correspondances des causes de décès par pays</h1>
 <section id="préparation-des-données" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="préparation-des-données"><span class="header-section-number">2.1</span> Préparation des données</h2>
-<p>URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world</p>
-<p>Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world]. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.</p>
+<p>Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde dont le lien se trouve en annexe. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.</p>
 <p>Afin de concentrer l’étude sur l’année la plus récente, nous avons extrait uniquement les observations de 2019. Une vérification préalable a confirmé l’absence de valeurs manquantes dans les variables retenues. Les données extraites ont ensuite été enregistrées dans un nouveau fichier CSV, distinct du fichier initial.</p>
 <p>La variable correspondant à l’année a été supprimée du fait que toutes les lignes concernent 2019. De même, parmi les deux colonnes descriptives des pays (nom complet et abréviation), seule la colonne des abréviations a été conservée, les correspondances avec les noms complets étant stockées dans un fichier séparé.</p>
 <p>Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport.</p>
 <p>Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Encodage des causes de décès</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Meningitis</th>
-<th style="text-align: left;">C1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Alzheimer’s Disease and Other Dementias</td>
-<td style="text-align: left;">C2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Parkinson’s Disease</td>
-<td style="text-align: left;">C3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Nutritional Deficiencies</td>
-<td style="text-align: left;">C4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Malaria</td>
-<td style="text-align: left;">C5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Drowning</td>
-<td style="text-align: left;">C6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Interpersonal Violence</td>
-<td style="text-align: left;">C7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Maternal Disorders</td>
-<td style="text-align: left;">C8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">HIV/AIDS</td>
-<td style="text-align: left;">C9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Drug Use Disorders</td>
-<td style="text-align: left;">C10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tuberculosis</td>
-<td style="text-align: left;">C11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cardiovascular Diseases</td>
-<td style="text-align: left;">C12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lower Respiratory Infections</td>
-<td style="text-align: left;">C13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Neonatal Disorders</td>
-<td style="text-align: left;">C14</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Alcohol Use Disorders</td>
-<td style="text-align: left;">C15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Self-harm</td>
-<td style="text-align: left;">C16</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Exposure to Forces of Nature</td>
-<td style="text-align: left;">C17</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diarrheal Diseases</td>
-<td style="text-align: left;">C18</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Environmental Heat and Cold Exposure</td>
-<td style="text-align: left;">C19</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Neoplasms</td>
-<td style="text-align: left;">C20</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Conflict and Terrorism</td>
-<td style="text-align: left;">C21</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diabetes Mellitus</td>
-<td style="text-align: left;">C22</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Chronic Kidney Disease</td>
-<td style="text-align: left;">C23</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Poisonings</td>
-<td style="text-align: left;">C24</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Protein-Energy Malnutrition</td>
-<td style="text-align: left;">C25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Road Injuries</td>
-<td style="text-align: left;">C26</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Chronic Respiratory Diseases</td>
-<td style="text-align: left;">C27</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Cirrhosis and Other Chronic Liver Diseases</td>
-<td style="text-align: left;">C28</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Digestive Diseases</td>
-<td style="text-align: left;">C29</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Fire, Heat, and Hot Substances</td>
-<td style="text-align: left;">C30</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Acute Hepatitis</td>
-<td style="text-align: left;">C31</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </section>
 </section>
 <section id="analyse-exploratoire" class="level1" data-number="3">
@@ -274,8 +134,6 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="visualisation-des-données-par-barplots" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="visualisation-des-données-par-barplots"><span class="header-section-number">3.3</span> Visualisation des données par barplots</h2>
-<section id="arménie" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="arménie"><span class="header-section-number">3.3.1</span> Arménie :</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -285,22 +143,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</section>
-<section id="mali" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="mali"><span class="header-section-number">3.3.2</span> Mali :</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><img src="rapport_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>2) Répartition des causes de décès au Mali en 2019</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="france" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="france"><span class="header-section-number">3.3.3</span> France :</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -310,7 +161,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="comparaison-de-pays" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="comparaison-de-pays"><span class="header-section-number">3.4</span> Comparaison de pays</h2>
@@ -870,7 +720,8 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </section>
 <section id="conclusion" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Conclusion</h1>
-<p><strong>Fatoumata</strong> L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.</p>
+<p><strong>Fatoumata</strong></p>
+<p>L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.</p>
 <p>Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, met en évidence l’existence d’une dépendance entre les pays et les causes de décès. Bien que cette dépendance demeure d’intensité modérée, elle est néanmoins significative et confirmée par la structure révélée par l’AFC. Cette analyse montre que les causes de décès ne se répartissent pas aléatoirement selon les pays, mais qu’elles sont associées à des profils nationaux spécifiques.</p>
 <p>L’examen du plan factoriel met en lumière des regroupements cohérents de pays présentant des profils de mortalité similaires. Les pays dits développés, majoritairement situés en Europe, en Amérique du Nord ou dans certaines régions d’Asie, apparaissent proches du profil moyen. Leur mortalité est principalement dominée par des maladies chroniques et dégénératives, telles que les maladies cardiovasculaires, les maladies neurologiques ou celles liées au vieillissement. À l’inverse, de nombreux pays africains se situent à distance du centre de gravité et présentent des profils proches les uns des autres, caractérisés par une forte prévalence de maladies infectieuses, de la malnutrition, ainsi que de décès liés aux conflits ou à l’instabilité politique. Ces causes, fortement contributrices aux axes factoriels, expliquent une part importante de la dépendance observée. De manière similaire, certains pays en situation de crise hors du continent africain, tels que l’Afghanistan ou le Yémen, se distinguent également par des profils très éloignés du profil moyen, en lien avec des causes de mortalité spécifiques comme les conflits armés, le terrorisme, le paludisme ou le VIH.</p>
 <p>Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables. Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.</p>
@@ -879,10 +730,149 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <p>Le test du khi-deux a confirmé l’existence d’une dépendance statistique entre pays et causes de décès, bien que la force de cette liaison soit modérée. L’AFC a permis de synthétiser cette information dans un espace de faible dimension, en sélectionnant les axes les plus pertinents selon les critères de Kaiser et du bâton brisé. L’examen des plans factoriels, des contributions et des distances au centre de gravité a fourni une compréhension détaillée des profils atypiques et des similarités entre pays et causes.</p>
 <p>En conclusion, cette approche méthodologique a permis d’identifier les tendances globales et les particularités locales de la mortalité, fournissant une base solide pour des analyses comparatives et pour des prises de décision en santé publique. Les résultats mettent en évidence à la fois les déterminants communs et les spécificités nationales des causes de décès, illustrant l’intérêt des méthodes multivariées pour l’analyse de données de grande dimension.</p>
 </section>
-<section id="références" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Références</h1>
-<section id="articles-manuels-r-sources-des-données" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="articles-manuels-r-sources-des-données"><span class="header-section-number">6.1</span> Articles, manuels R, sources des données</h2>
+<section id="annexe" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Annexe</h1>
+<section id="source-du-jeu-de-données-initiale" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="source-du-jeu-de-données-initiale"><span class="header-section-number">6.1</span> Source du jeu de données initiale</h2>
+<p>URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world</p>
+</section>
+<section id="tableau-de-lencodage-dzs-différentes-causes-de-décès" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tableau-de-lencodage-dzs-différentes-causes-de-décès"><span class="header-section-number">6.2</span> Tableau de l’encodage dzs différentes causes de décès</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Encodage des causes de décès</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Meningitis</th>
+<th style="text-align: left;">C1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alzheimer’s Disease and Other Dementias</td>
+<td style="text-align: left;">C2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Parkinson’s Disease</td>
+<td style="text-align: left;">C3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nutritional Deficiencies</td>
+<td style="text-align: left;">C4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaria</td>
+<td style="text-align: left;">C5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Drowning</td>
+<td style="text-align: left;">C6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Interpersonal Violence</td>
+<td style="text-align: left;">C7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maternal Disorders</td>
+<td style="text-align: left;">C8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HIV/AIDS</td>
+<td style="text-align: left;">C9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Drug Use Disorders</td>
+<td style="text-align: left;">C10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tuberculosis</td>
+<td style="text-align: left;">C11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cardiovascular Diseases</td>
+<td style="text-align: left;">C12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lower Respiratory Infections</td>
+<td style="text-align: left;">C13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Neonatal Disorders</td>
+<td style="text-align: left;">C14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alcohol Use Disorders</td>
+<td style="text-align: left;">C15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Self-harm</td>
+<td style="text-align: left;">C16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exposure to Forces of Nature</td>
+<td style="text-align: left;">C17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diarrheal Diseases</td>
+<td style="text-align: left;">C18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Environmental Heat and Cold Exposure</td>
+<td style="text-align: left;">C19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Neoplasms</td>
+<td style="text-align: left;">C20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conflict and Terrorism</td>
+<td style="text-align: left;">C21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diabetes Mellitus</td>
+<td style="text-align: left;">C22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chronic Kidney Disease</td>
+<td style="text-align: left;">C23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Poisonings</td>
+<td style="text-align: left;">C24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Protein-Energy Malnutrition</td>
+<td style="text-align: left;">C25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Road Injuries</td>
+<td style="text-align: left;">C26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chronic Respiratory Diseases</td>
+<td style="text-align: left;">C27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cirrhosis and Other Chronic Liver Diseases</td>
+<td style="text-align: left;">C28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Digestive Diseases</td>
+<td style="text-align: left;">C29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fire, Heat, and Hot Substances</td>
+<td style="text-align: left;">C30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Acute Hepatitis</td>
+<td style="text-align: left;">C31</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 
