@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#test-du-khi-deux-et-v-de-cramer" id="toc-test-du-khi-deux-et-v-de-cramer" class="nav-link" data-scroll-target="#test-du-khi-deux-et-v-de-cramer"><span class="header-section-number">4.1</span> Test du khi-deux et V de Cramer</a></li>
   <li><a href="#lancement-de-lafc" id="toc-lancement-de-lafc" class="nav-link" data-scroll-target="#lancement-de-lafc"><span class="header-section-number">4.2</span> Lancement de l’AFC</a></li>
   <li><a href="#critère-du-bâton-brisé-pour-sélectionner-les-axes" id="toc-critère-du-bâton-brisé-pour-sélectionner-les-axes" class="nav-link" data-scroll-target="#critère-du-bâton-brisé-pour-sélectionner-les-axes"><span class="header-section-number">4.3</span> Critère du bâton brisé pour sélectionner les axes</a></li>
-  <li><a href="#analyse-des-contributions-des-lignes-et-colonnes-il-faut-adapter-le-texte-à-partir-dici" id="toc-analyse-des-contributions-des-lignes-et-colonnes-il-faut-adapter-le-texte-à-partir-dici" class="nav-link" data-scroll-target="#analyse-des-contributions-des-lignes-et-colonnes-il-faut-adapter-le-texte-à-partir-dici"><span class="header-section-number">4.4</span> Analyse des contributions des lignes et colonnes ( il faut adapter le texte à partir d’ici)</a></li>
+  <li><a href="#analyse-des-contributions-des-lignes-et-colonnes" id="toc-analyse-des-contributions-des-lignes-et-colonnes" class="nav-link" data-scroll-target="#analyse-des-contributions-des-lignes-et-colonnes"><span class="header-section-number">4.4</span> Analyse des contributions des lignes et colonnes</a></li>
   <li><a href="#distances-au-centre-de-gravité" id="toc-distances-au-centre-de-gravité" class="nav-link" data-scroll-target="#distances-au-centre-de-gravité"><span class="header-section-number">4.5</span> Distances au centre de gravité</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5</span> Conclusion</a></li>
@@ -112,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : <em>Existe-t-il un lien entre le niveau de développement des pays et différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?</em> Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.</p>
+<p>En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : <em>Existe-t-il un lien entre le niveau de développement des pays et les différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?</em> Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.</p>
 </section>
 <section id="analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Analyse factorielle des correspondances des causes de décès par pays</h1>
@@ -352,6 +352,17 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">AFG</td>
+<td style="text-align: right;">0.0071816</td>
+<td style="text-align: right;">0.0081556</td>
+<td style="text-align: right;">0.0025730</td>
+<td style="text-align: right;">0.0057158</td>
+<td style="text-align: right;">0.0024352</td>
+<td style="text-align: right;">0.0077513</td>
+<td style="text-align: right;">0.0230425</td>
+<td style="text-align: right;">0.0185535</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">ARM</td>
 <td style="text-align: right;">0.0001788</td>
 <td style="text-align: right;">0.0312187</td>
@@ -362,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0054713</td>
 <td style="text-align: right;">0.0002861</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MLI</td>
 <td style="text-align: right;">0.0332092</td>
 <td style="text-align: right;">0.0065039</td>
@@ -373,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0122810</td>
 <td style="text-align: right;">0.0186735</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">FRA</td>
 <td style="text-align: right;">0.0003979</td>
 <td style="text-align: right;">0.0810118</td>
@@ -384,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0009473</td>
 <td style="text-align: right;">0.0000810</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MOZ</td>
 <td style="text-align: right;">0.0109682</td>
 <td style="text-align: right;">0.0061453</td>
@@ -395,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0072786</td>
 <td style="text-align: right;">0.0083276</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">AUS</td>
 <td style="text-align: right;">0.0002859</td>
 <td style="text-align: right;">0.0698592</td>
@@ -406,7 +417,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0020013</td>
 <td style="text-align: right;">0.0000808</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">ARG</td>
 <td style="text-align: right;">0.0013440</td>
 <td style="text-align: right;">0.0357363</td>
@@ -417,7 +428,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0085476</td>
 <td style="text-align: right;">0.0011185</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">0.0004042</td>
 <td style="text-align: right;">0.0507657</td>
@@ -460,6 +471,17 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">AFG</td>
+<td style="text-align: right;">0.0066205</td>
+<td style="text-align: right;">0.0010940</td>
+<td style="text-align: right;">0.0015440</td>
+<td style="text-align: right;">0.0049481</td>
+<td style="text-align: right;">0.0008240</td>
+<td style="text-align: right;">0.0071161</td>
+<td style="text-align: right;">0.0121089</td>
+<td style="text-align: right;">0.0205699</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">ARM</td>
 <td style="text-align: right;">0.0000212</td>
 <td style="text-align: right;">0.0005381</td>
@@ -470,7 +492,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0003694</td>
 <td style="text-align: right;">0.0000408</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MLI</td>
 <td style="text-align: right;">0.0265160</td>
 <td style="text-align: right;">0.0007557</td>
@@ -481,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0055897</td>
 <td style="text-align: right;">0.0179312</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">FRA</td>
 <td style="text-align: right;">0.0009573</td>
 <td style="text-align: right;">0.0283575</td>
@@ -492,7 +514,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0012990</td>
 <td style="text-align: right;">0.0002343</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MOZ</td>
 <td style="text-align: right;">0.0115594</td>
 <td style="text-align: right;">0.0009424</td>
@@ -503,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0043727</td>
 <td style="text-align: right;">0.0105549</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">AUS</td>
 <td style="text-align: right;">0.0001948</td>
 <td style="text-align: right;">0.0069279</td>
@@ -514,7 +536,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0007775</td>
 <td style="text-align: right;">0.0000662</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">ARG</td>
 <td style="text-align: right;">0.0019188</td>
 <td style="text-align: right;">0.0074241</td>
@@ -525,7 +547,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: right;">0.0069563</td>
 <td style="text-align: right;">0.0019205</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">0.0048542</td>
 <td style="text-align: right;">0.0887060</td>
@@ -540,7 +562,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 </div>
-<p>De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66 % (0.0066= 1563/(1563 +13+…+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.</p>
+<p>De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66% (0.0066= 1563/(1563 +13+…+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.</p>
 </section>
 <section id="comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2"><span class="header-section-number">3.6</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></h2>
@@ -645,10 +667,9 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <p>La comparaison numérique indique que les axes dont l’inertie observée dépasse celle du bâton brisé sont considérés comme pertinents. Dans cette analyse, quatre axes présentent une inertie supérieure à la valeur attendue par le bâton brisé et sont donc retenus pour l’interprétation factorielle.</p>
 <p>Un diagramme comparatif illustre visuellement la sélection des axes : les barres rouges représentant l’inertie observée sont mises côte à côte avec celles du bâton brisé, représentées en bleu. Cette représentation permet de visualiser aisément quels axes dépassent le seuil et confirment leur pertinence pour l’étude des relations entre les pays et les causes de décès. Ce critère identifiant moins d’axes pertinents que le critère de Kaiser, son résultat sera privilégié pour la suite de l’analyse.</p>
 </section>
-<section id="analyse-des-contributions-des-lignes-et-colonnes-il-faut-adapter-le-texte-à-partir-dici" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="analyse-des-contributions-des-lignes-et-colonnes-il-faut-adapter-le-texte-à-partir-dici"><span class="header-section-number">4.4</span> Analyse des contributions des lignes et colonnes ( il faut adapter le texte à partir d’ici)</h2>
-<p>Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays.</p>
-<p>Les biplots combinant lignes et colonnes sur les premiers plans factoriels fournissent une vue d’ensemble des relations entre pays et causes. Le premier plan factoriel (axes 1 et 2) est généralement le plus informatif, mais d’autres combinaisons d’axes peuvent également révéler des dimensions secondaires de variation.</p>
+<section id="analyse-des-contributions-des-lignes-et-colonnes" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="analyse-des-contributions-des-lignes-et-colonnes"><span class="header-section-number">4.4</span> Analyse des contributions des lignes et colonnes</h2>
+<p>Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, comme Djibouti et le Congo, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays. Par exemple, les troubles néonatals (C14), troubles maternels (C8) et maladies diarrhéiques(C18) apparaissent proches sur le graphique, suggérant qu’elles sont présentes dans des proportions comparables dans les mêmes pays. À l’inverse, la malaria (C5), très éloignée de l’origine et des autres modalités, présente un profil fortement spécifique, caractéristique d’un nombre limité de pays.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -671,43 +692,9 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-5.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-6.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-7.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-8.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats.</p>
+<p>Les biplots combinant simultanément les modalités des lignes (pays) et des colonnes (causes) permettent de visualiser les relations entre pays et causes de décès sur différents plans factoriels. Le premier plan factoriel, défini par les axes 1 et 2, est le plus informatif, concentrant une part importante de l’inertie totale avec 43 % pour l’axe 1 et 13,2 % pour l’axe 2. Il permet d’identifier les groupes de pays aux profils de mortalité similaires ainsi que les causes de décès les plus structurantes.</p>
+<p>Les plans factoriels secondaires, explorés grâce aux combinaisons d’axes 1-3, 1-4, 3-2, 4-2 et 4-3, apportent des informations complémentaires sur les dimensions moins dominantes. Par exemple, le plan 1-3 explique 43 % et 10,5 % de l’inertie, le plan 1-4 contribue à 43 % et 8,7 %, et les autres plans permettent de mettre en évidence des variations supplémentaires entre pays et causes de décès. L’option repel = T utilisée dans les biplots améliore la lisibilité en évitant le chevauchement des étiquettes. L’analyse combinée de ces différents plans factoriels permet ainsi de mettre en évidence à la fois les structures principales et les relations secondaires dans les données.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -744,29 +731,8 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-6.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-7.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-8.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La qualité de représentation de chaque modalité est évaluée à l’aide du cos2, indiquant la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités avec un cos2 élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Des diagrammes filtrés sur le cos2 permettent de visualiser clairement les pays et causes les mieux représentés, tout en réduisant l’encombrement visuel des graphiques.</p>
+<p>Pour approfondir l’interprétation, les contributions des lignes et des colonnes aux axes factoriels sont examinées. Les modalités les plus contributives sont identifiées, ce qui permet de se concentrer sur les pays et causes qui expliquent le mieux la variance sur chaque axe. Étant donné le grand nombre de pays (204), une sélection des dix premières contributions pour chaque axe facilite la lecture et l’interprétation des résultats. Sur l’axe 1, le Nigeria (NGA, ≈20%), la Chine et le Mozambique sont les principaux contributeurs, tandis que la malaria (C5) domine parmi les causes de décès (≈21%). L’axe 2 est fortement influencé par l’Afrique du Sud (ZAF, 33,8%) et le VIH (C9) (≈68%). L’axe 3 met en avant l’Afghanistan (AFG, 50,9%) et les conflits et terrorisme C21 (plus de 80%), et l’axe 4 est porté par l’Inde (IND, 24,2%) et la malaria (plus de 40%).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -803,13 +769,29 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.</p>
-</section>
-<section id="distances-au-centre-de-gravité" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="distances-au-centre-de-gravité"><span class="header-section-number">4.5</span> Distances au centre de gravité</h2>
-<p>L’AFC permet également de calculer la distance de chaque pays et de chaque cause au centre de gravité (barycentre) de l’ensemble des données. Cette distance est obtenue en rapportant l’inertie d’une modalité à sa masse, ce qui fournit une mesure de l’écart par rapport au profil moyen. Les pays dont la distance est faible possèdent un profil proche de la moyenne, tandis que ceux ayant une distance élevée présentent des profils atypiques ou fortement différenciés.</p>
-<p>La visualisation des distances au barycentre, par diagrammes en barres verticales ou horizontales, met en évidence les pays dont les profils sont les plus représentatifs et ceux qui s’écartent le plus du centre de gravité. Cette information est utile pour identifier les pays ou causes présentant des caractéristiques particulières et guide l’interprétation des plans factoriels précédemment étudiés.</p>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La qualité de représentation de chaque modalité est évaluée à l’aide du cos², qui mesure la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités présentant un cos² élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Pour rendre les graphiques plus lisibles, nous avons d’abord filtré les modalités avec un cos² supérieur à 0,7, garantissant ainsi que seules celles bien expliquées par les axes sont affichées. Parmi ces modalités, les 20 mieux représentées ont été sélectionnées pour produire un graphique final. Ce dernier utilise un code couleur : les modalités les mieux représentées, avec un cos² proche de 1, apparaissent en couleur claire, tandis que celles avec un cos² proche de 0,7 apparaissent en couleur plus foncée.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -839,13 +821,59 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.</p>
+</section>
+<section id="distances-au-centre-de-gravité" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="distances-au-centre-de-gravité"><span class="header-section-number">4.5</span> Distances au centre de gravité</h2>
+<p>L’AFC permet de mesurer l’écart de chaque pays ou cause par rapport au profil moyen à travers la distance au centre de gravité (barycentre). Cette distance est calculée en rapportant l’inertie de chaque modalité à sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente la distance la plus faible (≈0,12), ce qui signifie que son profil est très proche du profil moyen, tandis que l’Afghanistan (AFG) a la distance la plus élevée (≈11,02), indiquant un profil fortement atypique.</p>
+<p>Pour les causes, certaines présentent également des écarts importants : la cause C21 se distingue par une distance très élevée (≈60,83), ce qui suggère un profil extrêmement spécifique par rapport aux autres causes. Ces mesures permettent ainsi de détecter les pays et causes qui se rapprochent le plus du profil moyen et ceux qui s’en écartent fortement.</p>
+<p>La visualisation de ces distances, sous forme de diagrammes en barres verticales ou horizontales, facilite l’interprétation. Les barres les plus courtes correspondent aux profils proches de la moyenne, tandis que les barres plus longues signalent des profils atypiques. Cette représentation claire guide l’interprétation des plans factoriels précédemment étudiés et aide à identifier les modalités les plus influentes ou singulières dans l’analyse.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 </section>
 <section id="conclusion" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Conclusion</h1>
-<p><strong>Fatoumata</strong></p>
-<p>Résumer les principaux résultats :Combien d’axes retenus, quelles causes/pays se distinguent Interprétation des distances et profils. Limites de l’analyse. Perspectives éventuelles</p>
+<p><strong>Fatoumata</strong> L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.</p>
+<p>Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, met en évidence l’existence d’une dépendance entre les pays et les causes de décès. Bien que cette dépendance demeure d’intensité modérée, elle est néanmoins significative et confirmée par la structure révélée par l’AFC. Cette analyse montre que les causes de décès ne se répartissent pas aléatoirement selon les pays, mais qu’elles sont associées à des profils nationaux spécifiques.</p>
+<p>L’examen du plan factoriel met en lumière des regroupements cohérents de pays présentant des profils de mortalité similaires. Les pays dits développés, majoritairement situés en Europe, en Amérique du Nord ou dans certaines régions d’Asie, apparaissent proches du profil moyen. Leur mortalité est principalement dominée par des maladies chroniques et dégénératives, telles que les maladies cardiovasculaires, les maladies neurologiques ou celles liées au vieillissement. À l’inverse, de nombreux pays africains se situent à distance du centre de gravité et présentent des profils proches les uns des autres, caractérisés par une forte prévalence de maladies infectieuses, de la malnutrition, ainsi que de décès liés aux conflits ou à l’instabilité politique. Ces causes, fortement contributrices aux axes factoriels, expliquent une part importante de la dépendance observée. De manière similaire, certains pays en situation de crise hors du continent africain, tels que l’Afghanistan ou le Yémen, se distinguent également par des profils très éloignés du profil moyen, en lien avec des causes de mortalité spécifiques comme les conflits armés, le terrorisme, le paludisme ou le VIH.</p>
+<p>Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables. Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.</p>
 <p><strong>Yester</strong></p>
 <p>L’analyse des données de mortalité par pays et par cause a permis d’illustrer la richesse et la diversité des profils de décès dans le monde. L’exploration initiale par diagrammes en barres a montré des différences marquées entre pays, notamment entre pays à revenu élevé et pays à revenu faible. Les profils lignes et colonnes ont permis de comparer les structures de mortalité de manière normalisée et d’identifier les causes et pays les plus contributifs à chaque axe factoriel.</p>
 <p>Le test du khi-deux a confirmé l’existence d’une dépendance statistique entre pays et causes de décès, bien que la force de cette liaison soit modérée. L’AFC a permis de synthétiser cette information dans un espace de faible dimension, en sélectionnant les axes les plus pertinents selon les critères de Kaiser et du bâton brisé. L’examen des plans factoriels, des contributions et des distances au centre de gravité a fourni une compréhension détaillée des profils atypiques et des similarités entre pays et causes.</p>
