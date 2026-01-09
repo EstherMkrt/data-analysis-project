@@ -653,8 +653,6 @@ ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
 
 # Conclusion
 
-**Fatoumata**
-
 L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.
 
 Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, met en évidence l’existence d’une dépendance entre les pays et les causes de décès. Bien que cette dépendance demeure d’intensité modérée, elle est néanmoins significative et confirmée par la structure révélée par l’AFC. Cette analyse montre que les causes de décès ne se répartissent pas aléatoirement selon les pays, mais qu’elles sont associées à des profils nationaux spécifiques.
@@ -663,21 +661,13 @@ L’examen du plan factoriel met en lumière des regroupements cohérents de pay
 
 Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables. Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.
 
-**Yester**
-
-L’analyse des données de mortalité par pays et par cause a permis d’illustrer la richesse et la diversité des profils de décès dans le monde. L’exploration initiale par diagrammes en barres a montré des différences marquées entre pays, notamment entre pays à revenu élevé et pays à revenu faible. Les profils lignes et colonnes ont permis de comparer les structures de mortalité de manière normalisée et d’identifier les causes et pays les plus contributifs à chaque axe factoriel.
-
-Le test du khi-deux a confirmé l’existence d’une dépendance statistique entre pays et causes de décès, bien que la force de cette liaison soit modérée. L’AFC a permis de synthétiser cette information dans un espace de faible dimension, en sélectionnant les axes les plus pertinents selon les critères de Kaiser et du bâton brisé. L’examen des plans factoriels, des contributions et des distances au centre de gravité a fourni une compréhension détaillée des profils atypiques et des similarités entre pays et causes.
-
-En conclusion, cette approche méthodologique a permis d’identifier les tendances globales et les particularités locales de la mortalité, fournissant une base solide pour des analyses comparatives et pour des prises de décision en santé publique. Les résultats mettent en évidence à la fois les déterminants communs et les spécificités nationales des causes de décès, illustrant l’intérêt des méthodes multivariées pour l’analyse de données de grande dimension.
-
 # Annexe
 
 ## Source du jeu de données initiale
 
 URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
 
-## Tableau de l'encodage dzs différentes causes de décès
+## Tableau de l'encodage des différentes causes de décès
 
 ```{r}
 #| echo: false 
