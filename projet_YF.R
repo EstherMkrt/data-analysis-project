@@ -420,21 +420,21 @@ fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
 pres.afc$row$inertia
 
-# Sachant que les masses des individus sont données par
+# Les masses des individus sont données par
 pres.afc$call$marge.row
 
-# En déduire les distances aux CG : inertia/m_i
+# Les distances aux CG 
 
 pres.afc$row$inertia/pres.afc$call$marge.row
 barplot(sort(pres.afc$row$inertia/pres.afc$call$marge.row), las=2, cex.names=0.6)
 
-# Quel pays a le profil le plus proche du profil moyen ?
+# La distance évalue le caractère +/- atypique d'un profil en regard du profil moyen
+
+# Le pays qui a le profil le plus proche du profil moyen
 which.min(pres.afc$row$inertia/pres.afc$call$marge.row)
-# Quel pays a le profil le plus éloigné du profil moyen ?
+# Le pays qui a le profil le plus éloigné du profil moyen 
 which.max(pres.afc$row$inertia/pres.afc$call$marge.row)
 
-# Interprétation de ces distances 
-# La distance évalue le caractère +/- atypique d'un profil en regard du profil moyen
 
 # Pour les colonnes
 pres.afc$col$inertia/pres.afc$call$marge.col
@@ -452,10 +452,6 @@ ggplot(dafr, aes(x=reorder(row.names(dafr), -distance), y=distance)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1)) +
   labs(title="Distance au barycentre", x ="Pays", y = "Distance")
 
-# Barres horizontales
-ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
-  geom_col(fill = "steelblue") +
-  theme_grey(base_size = 7) +
-  labs(title="Distance au barycentre", y ="Pays", x = "Distance")
+
 
 
