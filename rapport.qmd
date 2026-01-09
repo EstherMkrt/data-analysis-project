@@ -26,7 +26,7 @@ Afin de concentrer l’étude sur l’année la plus récente, nous avons extrai
 
 La variable correspondant à l’année a été supprimée du fait que toutes les lignes concernent 2019. De même, parmi les deux colonnes descriptives des pays (nom complet et abréviation), seule la colonne des abréviations a été conservée, les correspondances avec les noms complets étant stockées dans un fichier séparé.
 
-Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également fourni dans le rapport.
+Pour améliorer la lisibilité et faciliter l’interprétation graphique dans l’Analyse Factorielle des Correspondances (AFC), nous avons procédé à un encodage des différentes causes de décès, chaque cause étant associée à un identifiant plus court. Cet encodage a été enregistré dans un document séparé, qui sera également disponible en annexe.
 
 Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.
 
@@ -132,13 +132,13 @@ barplot(
 )
 ```
 
-### Comparaison de pays
+### Comparaison des pays
 
 Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant le nombre de décès par cause respectivement en Arménie, au Mali et en France. Ces représentations graphiques ont pour objectif de comparer la structure de la mortalité selon les principales causes de décès dans chacun des pays étudiés.
 
 Les causes de décès sont représentées sur l’axe des ordonnées, tandis que l’axe des abscisses indique le nombre de morts. Ce choix de visualisation permet une lecture claire et facilite la comparaison entre catégories.
 
-L’analyse met en évidence des profils de mortalité contrastés. En Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables de plus de 12 000 décès, tandis que le néoplasme (C20) en représente environ 6 000. En France, ces mêmes causes figurent également parmi les principales causes de mortalité, avec plus de 15 000 décès pour le néoplasme et environ 20 000 pour la cause cardiovasculaires. À l’inverse, au Mali, les maladies transmissibles ainsi que certaines maladies infectueuses occupent une place plus importante dans la mortalité totale : les entraîné environ 32 000 décès, les maladies cardiovasculaires (C12) près de 20 000 décès, et l'automutilation et la malnutrition (C18 et C25) environ 14 000 décès chacune.
+L’analyse met en évidence des profils de mortalité contrastés. En Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables de plus de 12 000 décès, tandis que le néoplasme (C20) en représente environ 6 000. En France, ces mêmes causes figurent également parmi les principales causes de mortalité, avec plus de 15 000 décès pour le néoplasme et environ 20 000 pour la cause cardiovasculaires. À l’inverse, au Mali, les maladies transmissibles ainsi que certaines maladies infectueuses occupent une place plus importante dans la mortalité totale. Ils ont entraîné environ 32 000 décès, les maladies cardiovasculaires (C12) près de 20 000 décès, et l'automutilation et la malnutrition (C18 et C25) environ 14 000 décès chacune.
 
 Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
 
@@ -274,6 +274,10 @@ Le test met en évidence une statistique du khi-deux très élevée (36 396 969)
 
 Afin de quantifier l’intensité de la liaison entre les deux variables, le coefficient de V de Cramér est calculé. La valeur obtenue étant 0.149 indique une liaison faible entre le pays et la cause de décès, malgré le rejet de l’hypothèse d’indépendance. Ce résultat souligne que la dépendance statistique observée est réelle mais modérée.
 
+Sous l'hypothèse d'indépendance, les profils attendus pour différents pays sont égaux. Nous le confirmons avec les exemples de la France et du Mali.
+
+###resu.chi2$expected["FRA",] / sum(resu.chi2$expected\["FRA",\]) resu.chi2$expected["MLI",] / sum(resu.chi2$expected\["MLI",\])
+
 L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Ces écarts traduisent des phénomènes d’attirance et de répulsion : un résidu standardisé positif indique qu’un pays et une cause se rencontrent plus fréquemment que prévu (attirance), tandis qu’un résidu standardisé négatif montre une occurrence moindre que prévu (répulsion). Un résidu supérieur à 2 ou inférieur à −2 est généralement considéré comme significatif.
 
 ```{r}
@@ -281,7 +285,8 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 #| warning: false
 #| message: false
 
- # ICI ajouter le tableau des résidus
+ # Le tableau des résidus
+resu.chi2$stdres
 
 ```
 
@@ -599,9 +604,9 @@ Cette analyse graphique et quantitative des contributions et de la qualité de r
 
 L’AFC permet de mesurer l’écart de chaque pays ou cause par rapport au profil moyen à travers la distance au centre de gravité (barycentre). Cette distance est calculée en rapportant l’inertie de chaque modalité à sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente la distance la plus faible (≈0,12), ce qui signifie que son profil est très proche du profil moyen, tandis que l’Afghanistan (AFG) a la distance la plus élevée (≈11,02), indiquant un profil fortement atypique.
 
-Pour les causes, certaines présentent également des écarts importants : la cause C21 se distingue par une distance très élevée (≈60,83), ce qui suggère un profil extrêmement spécifique par rapport aux autres causes. Ces mesures permettent ainsi de détecter les pays et causes qui se rapprochent le plus du profil moyen et ceux qui s’en écartent fortement.
+Pour les causes, certaines présentent également des écarts importants : les conflits et terrorismes (C21) se distinguent par une distance très élevée (≈60,83), ce qui suggère un profil extrêmement spécifique par rapport aux autres causes. Ces mesures permettent ainsi de détecter les pays et causes qui se rapprochent le plus du profil moyen et ceux qui s’en écartent fortement.
 
-La visualisation de ces distances, sous forme de diagrammes en barres verticales ou horizontales, facilite l’interprétation. Les barres les plus courtes correspondent aux profils proches de la moyenne, tandis que les barres plus longues signalent des profils atypiques. Cette représentation claire guide l’interprétation des plans factoriels précédemment étudiés et aide à identifier les modalités les plus influentes ou singulières dans l’analyse.
+La visualisation de ces distances, sous forme de diagrammes en barres verticales ou horizontales, facilite l’interprétation. Les barres les plus courtes correspondent aux profils proches de la moyenne, tandis que les barres plus longues signalent des profils atypiques.
 
 ```{r}
 #| echo: false

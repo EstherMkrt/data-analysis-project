@@ -195,7 +195,7 @@ resu.chi2$stdres["FRA",]
 
 resu.chi2$stdres
 
-# Sous l'hyp H0 d'indépendance, les profils attendus pour différents départements sont égaux
+# Sous l'hyp H0 d'indépendance, les profils attendus pour différents pays sont égaux
 resu.chi2$expected["FRA",] / sum(resu.chi2$expected["FRA",])
 resu.chi2$expected["MLI",] / sum(resu.chi2$expected["MLI",])
 
