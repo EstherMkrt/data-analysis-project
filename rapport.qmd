@@ -20,9 +20,7 @@ En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent
 
 ## Préparation des données
 
-URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
-
-Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world\]. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.
+Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde dont le lien se trouve en annexe. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.
 
 Afin de concentrer l’étude sur l’année la plus récente, nous avons extrait uniquement les observations de 2019. Une vérification préalable a confirmé l’absence de valeurs manquantes dans les variables retenues. Les données extraites ont ensuite été enregistrées dans un nouveau fichier CSV, distinct du fichier initial.
 
@@ -48,11 +46,6 @@ library(skimr)
 library(PCDimension)
 library(knitr)
 
-codage <- read.csv("codage_causes.csv")
-kable(
-  codage,
-  caption = "Encodage des causes de décès"
-)
 ```
 
 # Analyse exploratoire
@@ -69,7 +62,6 @@ Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de 
 
 ## Visualisation des données par barplots
 
-### Arménie :
 
 ```{r}
 #| echo: false
@@ -105,12 +97,13 @@ barplot(
 )
 ```
 
-### Mali :
+
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
+
 #| fig-cap: "2) Répartition des causes de décès au Mali en 2019"
 
 par(mar = c(6,10,4,2))
@@ -126,7 +119,7 @@ barplot(
 )
 ```
 
-### France :
+
 
 ```{r}
 #| echo: false
@@ -669,9 +662,11 @@ ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
 
 ```
 
+
 # Conclusion
 
 **Fatoumata**
+
 L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.
 
 Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, met en évidence l’existence d’une dépendance entre les pays et les causes de décès. Bien que cette dépendance demeure d’intensité modérée, elle est néanmoins significative et confirmée par la structure révélée par l’AFC. Cette analyse montre que les causes de décès ne se répartissent pas aléatoirement selon les pays, mais qu’elles sont associées à des profils nationaux spécifiques.
@@ -690,6 +685,25 @@ Le test du khi-deux a confirmé l’existence d’une dépendance statistique en
 
 En conclusion, cette approche méthodologique a permis d’identifier les tendances globales et les particularités locales de la mortalité, fournissant une base solide pour des analyses comparatives et pour des prises de décision en santé publique. Les résultats mettent en évidence à la fois les déterminants communs et les spécificités nationales des causes de décès, illustrant l’intérêt des méthodes multivariées pour l’analyse de données de grande dimension.
 
-# Références
+# Annexe
 
-## Articles, manuels R, sources des données
+## Source du jeu de données initiale
+
+URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
+
+## Tableau de l'encodage dzs différentes causes de décès
+
+
+```{r}
+#| echo: false 
+#| warning: false
+#| message: false
+
+codage <- read.csv("codage_causes.csv")
+kable(
+  codage,
+  caption = "Encodage des causes de décès"
+)
+
+```
+
