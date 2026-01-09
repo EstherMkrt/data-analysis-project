@@ -14,7 +14,7 @@ editor: visual
 
 # Introduction
 
-En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
+En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et les différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
 
 # Analyse factorielle des correspondances des causes de décès par pays
 
@@ -672,8 +672,15 @@ ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
 # Conclusion
 
 **Fatoumata**
+L’objectif de ce travail était d’étudier l’existence d’un lien entre les causes de décès et les pays, et d’identifier d’éventuelles similarités de profils de mortalité entre ces derniers, en mobilisant l’analyse factorielle des correspondances. Les résultats obtenus permettent d’apporter des réponses claires aux questions formulées en introduction.
 
-Résumer les principaux résultats :Combien d’axes retenus, quelles causes/pays se distinguent Interprétation des distances et profils. Limites de l’analyse. Perspectives éventuelles
+Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, met en évidence l’existence d’une dépendance entre les pays et les causes de décès. Bien que cette dépendance demeure d’intensité modérée, elle est néanmoins significative et confirmée par la structure révélée par l’AFC. Cette analyse montre que les causes de décès ne se répartissent pas aléatoirement selon les pays, mais qu’elles sont associées à des profils nationaux spécifiques.
+
+L’examen du plan factoriel met en lumière des regroupements cohérents de pays présentant des profils de mortalité similaires. Les pays dits développés, majoritairement situés en Europe, en Amérique du Nord ou dans certaines régions d’Asie, apparaissent proches du profil moyen. Leur mortalité est principalement dominée par des maladies chroniques et dégénératives, telles que les maladies cardiovasculaires, les maladies neurologiques ou celles liées au vieillissement. À l’inverse, de nombreux pays africains se situent à distance du centre de gravité et présentent des profils proches les uns des autres, caractérisés par une forte prévalence de maladies infectieuses, de la malnutrition, ainsi que de décès liés aux conflits ou à l’instabilité politique. Ces causes, fortement contributrices aux axes factoriels, expliquent une part importante de la dépendance observée. De manière similaire, certains pays en situation de crise hors du continent africain, tels que l’Afghanistan ou le Yémen, se distinguent également par des profils très éloignés du profil moyen, en lien avec des causes de mortalité spécifiques comme les conflits armés, le terrorisme, le paludisme ou le VIH.
+
+Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables.
+Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.
+
 
 **Yester**
 
