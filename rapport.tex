@@ -1,0 +1,875 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{beamer}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Analyse factorielle des correspondances des causes de décès par pays},
+  pdfauthor={MKRTCHYAN Yester, TOURE Fatoumata Salihou},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Analyse factorielle des correspondances des causes de décès par
+pays}
+\author{MKRTCHYAN Yester, TOURE Fatoumata Salihou}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\section{Introduction}\label{introduction}
+
+En 2019, en Afrique subsaharienne, les maladies non transmissibles
+représentent environ 35 à 40 \% des décès chez les adultes, d'après les
+données mondiales de l'OMS. Intuitivement, les infections pourraient
+pourtant être considérées comme dominantes, compte tenu du niveau de
+développement des pays. Cela soulève plusieurs questions centrales pour
+l'analyse : \emph{Existe-t-il un lien entre le niveau de développement
+des pays et les différentes causes de décès ? Quels pays présentent des
+profils similaires de mortalité ?} Afin d'y répondre rigoureusement, il
+est pertinent de réaliser une Analyse Factorielle des Correspondances
+(AFC) sur les données enregistrées.
+
+\section{Analyse factorielle des correspondances des causes de décès par
+pays}\label{analyse-factorielle-des-correspondances-des-causes-de-duxe9cuxe8s-par-pays}
+
+\subsection{Préparation des
+données}\label{pruxe9paration-des-donnuxe9es}
+
+Pour cette analyse, nous avons utilisé un jeu de données disponible sur
+Kaggle, portant sur les causes de mortalité dans le monde dont le lien
+se trouve en annexe. Le jeu de données original couvre la période 1990 à
+2019 et recense les effectifs de décès pour 204 pays et territoires,
+organisés sous la forme d'un tableau pays × causes de décès.
+
+Afin de concentrer l'étude sur l'année la plus récente, nous avons
+extrait uniquement les observations de 2019. Une vérification préalable
+a confirmé l'absence de valeurs manquantes dans les variables retenues.
+Les données extraites ont ensuite été enregistrées dans un nouveau
+fichier CSV, distinct du fichier initial.
+
+La variable correspondant à l'année a été supprimée du fait que toutes
+les lignes concernent 2019. De même, parmi les deux colonnes
+descriptives des pays (nom complet et abréviation), seule la colonne des
+abréviations a été conservée, les correspondances avec les noms complets
+étant stockées dans un fichier séparé.
+
+Pour améliorer la lisibilité et faciliter l'interprétation graphique
+dans l'Analyse Factorielle des Correspondances (AFC), nous avons procédé
+à un encodage des différentes causes de décès, chaque cause étant
+associée à un identifiant plus court. Cet encodage a été enregistré dans
+un document séparé, qui sera également fourni dans le rapport.
+
+Le jeu de données final comporte ainsi 204 lignes correspondant aux
+abréviations des pays et territoires, et des colonnes représentant les
+différentes causes de décès encodées, avec pour valeurs les effectifs
+observés. En étant deux variables qualitatives il convient de procéder à
+une AFC.
+
+\subsection{Analyse exploratoire}\label{analyse-exploratoire}
+
+\subsubsection{Chargement des données}\label{chargement-des-donnuxe9es}
+
+La première étape de l'analyse consiste à charger les librairies
+nécessaires ainsi que le jeu de données à analyser dans le script R qui
+est le fichier CSV nettoyé. Après l'importation, une première
+visualisation globale du tableau est réalisée afin de vérifier la
+structure des données et la cohérence des variables.
+
+Au moment du chargement de données, la première colonne du jeu de
+données est désigné comme étant la colonne d'identification des lignes
+et elle est ensuite supprimée, afin de ne conserver que les causes de
+décès sous forme numérique. Cette étape permet de faciliter les
+traitements ultérieurs et l'accès direct aux informations par pays.
+
+Le jeu de données obtenu est stocké dans la variable ``morts'' pour le
+reste de l'analyse. Une vérification du jeu de données à l'aide de
+l'affichage des premières lignes confirme la bonne manipulation des
+données et l'absence d'anomalies apparentes.
+
+\subsubsection{Visualisation des données par
+barplots}\label{visualisation-des-donnuxe9es-par-barplots}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+
+\subsubsection{Comparaison de pays}\label{comparaison-de-pays}
+
+Les Figures 1 à 3 présentent des diagrammes en barres horizontales
+illustrant le nombre de décès par cause respectivement en Arménie, au
+Mali et en France. Ces représentations graphiques ont pour objectif de
+comparer la structure de la mortalité selon les principales causes de
+décès dans chacun des pays étudiés.
+
+Les causes de décès sont représentées sur l'axe des ordonnées, tandis
+que l'axe des abscisses indique le nombre de morts. Ce choix de
+visualisation permet une lecture claire et facilite la comparaison entre
+catégories.
+
+L'analyse met en évidence des profils de mortalité contrastés. En
+Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables
+de plus de 12 000 décès, tandis que le néoplasme (C20) en représente
+environ 6 000. En France, ces mêmes causes figurent également parmi les
+principales causes de mortalité, avec plus de 15 000 décès pour le
+néoplasme et environ 20 000 pour la cause cardiovasculaires. À
+l'inverse, au Mali, les maladies transmissibles ainsi que certaines
+maladies infectueuses occupent une place plus importante dans la
+mortalité totale : les entraîné environ 32 000 décès, les maladies
+cardiovasculaires (C12) près de 20 000 décès, et l'automutilation et la
+malnutrition (C18 et C25) environ 14 000 décès chacune.
+
+Cette analyse descriptive constitue une première étape exploratoire.
+Elle permet de dégager des tendances générales et justifie la poursuite
+de l'étude par des analyses comparatives plus approfondies entre pays et
+groupes de causes de décès.
+
+\subsubsection{Profils ligne et colonne}\label{profils-ligne-et-colonne}
+
+Afin d'approfondir l'analyse descriptive, des profils lignes et des
+profils colonnes ont été construits à partir du tableau de contingence
+des décès par cause et par pays. Le profil ligne d'un pays correspond à
+la répartition relative des causes de décès à l'intérieur de ce pays :
+chaque valeur représente la proportion d'une cause donnée parmi
+l'ensemble des décès du pays considéré. Par exemple, en Afghanistan la
+meningite reperesente 0.7\% des causes des décès en 2019 (0.007 =
+1563/(1563+1775+\ldots+485 +1940)). Ainsi, la somme des proportions sur
+une ligne est égale à 1, ce qui permet de comparer les structures de
+mortalité indépendamment du niveau absolu de mortalité.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0476}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}@{}}
+\caption{Profils lignes pour quelques pays et causes
+sélectionnés}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C4
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C5
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C7
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C8
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C4
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C5
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C7
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C8
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AFG & 0.0071816 & 0.0081556 & 0.0025730 & 0.0057158 & 0.0024352 &
+0.0077513 & 0.0230425 & 0.0185535 \\
+ARM & 0.0001788 & 0.0312187 & 0.0060435 & 0.0001430 & 0.0000000 &
+0.0015735 & 0.0054713 & 0.0002861 \\
+MLI & 0.0332092 & 0.0065039 & 0.0017241 & 0.0788586 & 0.0954897 &
+0.0052678 & 0.0122810 & 0.0186735 \\
+FRA & 0.0003979 & 0.0810118 & 0.0140813 & 0.0083357 & 0.0000000 &
+0.0016622 & 0.0009473 & 0.0000810 \\
+MOZ & 0.0109682 & 0.0061453 & 0.0013705 & 0.0141875 & 0.0825047 &
+0.0028777 & 0.0072786 & 0.0083276 \\
+AUS & 0.0002859 & 0.0698592 & 0.0149352 & 0.0010193 & 0.0000000 &
+0.0012182 & 0.0020013 & 0.0000808 \\
+ARG & 0.0013440 & 0.0357363 & 0.0090283 & 0.0039460 & 0.0000000 &
+0.0016793 & 0.0085476 & 0.0011185 \\
+USA & 0.0004042 & 0.0507657 & 0.0113620 & 0.0021482 & 0.0000000 &
+0.0012751 & 0.0062466 & 0.0003492 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0476}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1190}}@{}}
+\caption{Profils colonnes pour quelques pays et causes
+sélectionnés}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C4
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C5
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C7
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C8
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C4
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C5
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C7
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+C8
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AFG & 0.0066205 & 0.0010940 & 0.0015440 & 0.0049481 & 0.0008240 &
+0.0071161 & 0.0121089 & 0.0205699 \\
+ARM & 0.0000212 & 0.0005381 & 0.0004659 & 0.0000159 & 0.0000000 &
+0.0001856 & 0.0003694 & 0.0000408 \\
+MLI & 0.0265160 & 0.0007557 & 0.0008961 & 0.0591263 & 0.0279850 &
+0.0041887 & 0.0055897 & 0.0179312 \\
+FRA & 0.0009573 & 0.0283575 & 0.0220484 & 0.0188297 & 0.0000000 &
+0.0039820 & 0.0012990 & 0.0002343 \\
+MOZ & 0.0115594 & 0.0009424 & 0.0009402 & 0.0140408 & 0.0319154 &
+0.0030202 & 0.0043727 & 0.0105549 \\
+AUS & 0.0001948 & 0.0069279 & 0.0066253 & 0.0006523 & 0.0000000 &
+0.0008268 & 0.0007775 & 0.0000662 \\
+ARG & 0.0019188 & 0.0074241 & 0.0083898 & 0.0052901 & 0.0000000 &
+0.0023875 & 0.0069563 & 0.0019205 \\
+USA & 0.0048542 & 0.0887060 & 0.0888084 & 0.0242233 & 0.0000000 &
+0.0152487 & 0.0427591 & 0.0050431 \\
+\end{longtable}
+
+De manière complémentaire, les profils colonnes décrivent, pour chaque
+cause de décès, la répartition relative des pays. Chaque valeur indique
+la contribution d'un pays donné au total des décès observés pour une
+cause spécifique . En 2019, l'Afghanistan représentait 0,66\% (0.0066=
+1563/(1563 +13+\ldots+2065+1450))de la mortalité mondiale due à la
+méningite. Là encore, la normalisation par colonne permet de comparer
+les pays entre eux pour une cause donnée, sans être influencé par les
+différences globales de population ou de mortalité.
+
+\subsubsection{\texorpdfstring{Comparaison des pays, graphiques de
+profils ligne et colonnes avec
+\texttt{ggplot2}}{Comparaison des pays, graphiques de profils ligne et colonnes avec ggplot2}}\label{comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2}
+
+Les profils lignes sont ensuite représentés graphiquement afin de
+faciliter l'interprétation. Le profil ligne de la France met en évidence
+la prédominance des maladies non infectueuses dans la structure de la
+mortalité, confirmant les observations issues de l'analyse par
+diagrammes en barres. Une comparaison des profils lignes de la France et
+du Mali souligne des contrastes marqués : la France présente une
+concentration plus forte des décès sur les maladies chroniques, tandis
+que le Mali affiche une part relativement plus importante de maladies
+infectueuses et de causes évitables. Ces différences traduisent des
+stades distincts de transition épidémiologique et fournissent une base
+pertinente pour des analyses multivariées ultérieures, telles que
+l'analyse des correspondances.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-6-2.pdf}}
+
+\subsection{Analyses avancées ( AFC et
+Tests)}\label{analyses-avancuxe9es-afc-et-tests}
+
+\subsubsection{Test du khi-deux et V de
+Cramer}\label{test-du-khi-deux-et-v-de-cramer}
+
+Afin d'évaluer statistiquement l'existence d'un lien entre les pays et
+les causes de décès, un test du khi-deux d'indépendance est réalisé à
+partir du tableau de contingence. L'hypothèse nulle H0 suppose
+l'indépendance entre le pays et la cause de décès, tandis que
+l'hypothèse alternative H1 postule l'existence d'une dépendance entre
+ces deux variables.
+
+Le test met en évidence une statistique du khi-deux très élevée (36 396
+969) associée à une p-value nulle, conduisant au rejet de l'hypothèse
+d'indépendance au seuil usuel. Cela suggère que la répartition des
+causes de décès diffère significativement selon les pays considérés.
+Toutefois, l'interprétation de ce résultat doit être nuancée, car la
+structure du tableau, notamment la présence de nombreux effectifs élevés
+et de fortes disparités entre pays limite la pertinence stricte du test
+du khi-deux.
+
+Afin de quantifier l'intensité de la liaison entre les deux variables,
+le coefficient de V de Cramér est calculé. La valeur obtenue étant 0.149
+indique une liaison faible entre le pays et la cause de décès, malgré le
+rejet de l'hypothèse d'indépendance. Ce résultat souligne que la
+dépendance statistique observée est réelle mais modérée.
+
+L'examen des effectifs attendus sous l'hypothèse d'indépendance ainsi
+que des résidus standardisés permet d'identifier les principales
+contributions au khi-deux. Ces écarts traduisent des phénomènes
+d'attirance et de répulsion : un résidu standardisé positif indique
+qu'un pays et une cause se rencontrent plus fréquemment que prévu
+(attirance), tandis qu'un résidu standardisé négatif montre une
+occurrence moindre que prévu (répulsion). Un résidu supérieur à 2 ou
+inférieur à −2 est généralement considéré comme significatif.
+
+À titre d'illustration, le Bangladesh (BGD) présente un résidu
+standardisé de −99,09 pour la malaria (C5), ce qui traduit une répulsion
+extrêmement marquée : cette cause est très fortement sous-représentée
+dans ce pays par rapport à ce qui serait attendu sous l'hypothèse
+d'indépendance. À l'inverse, l'Afghanistan (AFG) affiche un résidu
+standardisé très élevé (116,45) pour les troubles maternels (C8),
+indiquant une attirance très forte entre ce pays et cette cause de
+décès, largement surreprésentée par rapport au modèle d'indépendance.
+
+\subsection{Lancement de l'AFC}\label{lancement-de-lafc}
+
+Pour explorer les relations entre les pays et les causes de décès, une
+analyse factorielle des correspondances (AFC) est réalisée. Cette
+méthode multivariée est particulièrement adaptée aux tableaux de
+contingence et permet de visualiser les dépendances entre lignes (pays)
+et colonnes (causes) tout en réduisant la dimensionnalité des données.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-8-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-8-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-8-3.pdf}}
+
+L'AFC est appliquée aux 204 pays du tableau, considérés comme lignes
+actives. Les valeurs propres associées aux axes factoriels sont
+examinées afin de déterminer la part d'inertie expliquée par chaque axe
+et d'identifier le nombre d'axes significatifs à retenir. La
+décroissance des valeurs propres est représentée graphiquement pour
+faciliter l'interprétation. La somme des valeurs propres correspond à
+l'inertie totale du tableau, qui peut également être calculée à partir
+de la statistique du khi-deux normalisée par l'effectif total (Phi2).
+Dans les deux cas la valeur trouvée est 0.6695183.
+
+Le critère de Kaiser est utilisé pour identifier les axes factoriels
+dont l'inertie dépasse la moyenne qui est 0.02231728, indiquant qu'ils
+expliquent une proportion d'information supérieure à celle attendue par
+hasard. Dans cette analyse, six axes présentent une inertie supérieure à
+la moyenne et sont donc retenus pour l'interprétation.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-9-2.pdf}}
+
+Les diagrammes de l'inertie totale et du pourcentage d'inertie
+permettent de visualiser la contribution relative de chaque axe à la
+structure globale des données, préparant ainsi l'interprétation des
+positions des pays et des causes sur les plans factoriels. Cette étape
+constitue un prérequis essentiel avant de produire les représentations
+graphiques des individus et des variables dans l'espace factoriel.
+
+\subsubsection{Critère du bâton brisé pour sélectionner les
+axes}\label{crituxe8re-du-buxe2ton-brisuxe9-pour-suxe9lectionner-les-axes}
+
+Pour compléter l'identification des axes significatifs, le critère du
+bâton brisé est utilisé. Les valeurs propres observées sont ainsi mises
+en relation avec les proportions théoriques du bâton brisé, permettant
+de distinguer les axes apportant une information réelle de ceux qui ne
+contiennent qu'un bruit statistique.
+
+\begin{verbatim}
+ dim 1  dim 2  dim 3  dim 4  dim 5  dim 6  dim 7  dim 8  dim 9 dim 10 dim 11 
+  TRUE   TRUE   TRUE   TRUE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE 
+dim 12 dim 13 dim 14 dim 15 dim 16 dim 17 dim 18 dim 19 dim 20 dim 21 dim 22 
+ FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE 
+dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30 
+ FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE 
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-10-1.pdf}}
+
+La comparaison numérique indique que les axes dont l'inertie observée
+dépasse celle du bâton brisé sont considérés comme pertinents. Dans
+cette analyse, quatre axes présentent une inertie supérieure à la valeur
+attendue par le bâton brisé et sont donc retenus pour l'interprétation
+factorielle.
+
+Un diagramme comparatif illustre visuellement la sélection des axes :
+les barres rouges représentant l'inertie observée sont mises côte à côte
+avec celles du bâton brisé, représentées en bleu. Cette représentation
+permet de visualiser aisément quels axes dépassent le seuil et
+confirment leur pertinence pour l'étude des relations entre les pays et
+les causes de décès. Ce critère identifiant moins d'axes pertinents que
+le critère de Kaiser, son résultat sera privilégié pour la suite de
+l'analyse.
+
+\subsubsection{Analyse des contributions des lignes et
+colonnes}\label{analyse-des-contributions-des-lignes-et-colonnes}
+
+Après sélection des axes significatifs, l'AFC permet de représenter les
+modalités des lignes (pays) et des colonnes (causes) dans l'espace
+factoriel. Les diagrammes factoriels des lignes et des colonnes mettent
+en évidence les similitudes et les différences structurelles : les pays
+proches sur le plan factoriel présentent des profils de mortalité
+similaires, comme Djibouti et le Congo, tandis que les causes de décès
+rapprochées indiquent une co-occurrence relative dans différents pays.
+Par exemple, les troubles néonatals (C14), troubles maternels (C8) et
+maladies diarrhéiques(C18) apparaissent proches sur le graphique,
+suggérant qu'elles sont présentes dans des proportions comparables dans
+les mêmes pays. À l'inverse, la malaria (C5), très éloignée de l'origine
+et des autres modalités, présente un profil fortement spécifique,
+caractéristique d'un nombre limité de pays.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-11-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-11-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-11-3.pdf}}
+
+Les biplots combinant simultanément les modalités des lignes (pays) et
+des colonnes (causes) permettent de visualiser les relations entre pays
+et causes de décès sur différents plans factoriels. Le premier plan
+factoriel, défini par les axes 1 et 2, est le plus informatif,
+concentrant une part importante de l'inertie totale avec 43 \% pour
+l'axe 1 et 13,2 \% pour l'axe 2. Il permet d'identifier les groupes de
+pays aux profils de mortalité similaires ainsi que les causes de décès
+les plus structurantes.
+
+Les plans factoriels secondaires, explorés grâce aux combinaisons d'axes
+1-3, 1-4, 3-2, 4-2 et 4-3, apportent des informations complémentaires
+sur les dimensions moins dominantes. Par exemple, le plan 1-3 explique
+43 \% et 10,5 \% de l'inertie, le plan 1-4 contribue à 43 \% et 8,7 \%,
+et les autres plans permettent de mettre en évidence des variations
+supplémentaires entre pays et causes de décès. L'option repel = T
+utilisée dans les biplots améliore la lisibilité en évitant le
+chevauchement des étiquettes. L'analyse combinée de ces différents plans
+factoriels permet ainsi de mettre en évidence à la fois les structures
+principales et les relations secondaires dans les données.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-12-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-12-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-12-3.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-12-4.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-12-5.pdf}}
+
+Pour approfondir l'interprétation, les contributions des lignes et des
+colonnes aux axes factoriels sont examinées. Les modalités les plus
+contributives sont identifiées, ce qui permet de se concentrer sur les
+pays et causes qui expliquent le mieux la variance sur chaque axe. Étant
+donné le grand nombre de pays (204), une sélection des dix premières
+contributions pour chaque axe facilite la lecture et l'interprétation
+des résultats. Sur l'axe 1, le Nigeria (NGA, ≈20\%), la Chine et le
+Mozambique sont les principaux contributeurs, tandis que la malaria (C5)
+domine parmi les causes de décès (≈21\%). L'axe 2 est fortement
+influencé par l'Afrique du Sud (ZAF, 33,8\%) et le VIH (C9) (≈68\%).
+L'axe 3 met en avant l'Afghanistan (AFG, 50,9\%) et les conflits et
+terrorisme C21 (plus de 80\%), et l'axe 4 est porté par l'Inde (IND,
+24,2\%) et la malaria (plus de 40\%).
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-3.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-4.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-5.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-6.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-7.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-13-8.pdf}}
+
+La qualité de représentation de chaque modalité est évaluée à l'aide du
+cos², qui mesure la proportion de la variance de la modalité expliquée
+par les axes retenus. Les modalités présentant un cos² élevé sont mieux
+représentées sur le plan factoriel et constituent des points de
+référence fiables pour l'interprétation. Pour rendre les graphiques plus
+lisibles, nous avons d'abord filtré les modalités avec un cos² supérieur
+à 0,7, garantissant ainsi que seules celles bien expliquées par les axes
+sont affichées. Parmi ces modalités, les 20 mieux représentées ont été
+sélectionnées pour produire un graphique final. Ce dernier utilise un
+code couleur : les modalités les mieux représentées, avec un cos² proche
+de 1, apparaissent en couleur claire, tandis que celles avec un cos²
+proche de 0,7 apparaissent en couleur plus foncée.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-14-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-14-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-14-3.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-14-4.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-14-5.pdf}}
+
+Cette analyse graphique et quantitative des contributions et de la
+qualité de représentation fournit une base solide pour tirer des
+conclusions sur les profils de mortalité et les relations entre pays et
+causes dans l'ensemble du jeu de données.
+
+\subsubsection{Distances au centre de
+gravité}\label{distances-au-centre-de-gravituxe9}
+
+L'AFC permet de mesurer l'écart de chaque pays ou cause par rapport au
+profil moyen à travers la distance au centre de gravité (barycentre).
+Cette distance est calculée en rapportant l'inertie de chaque modalité à
+sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente
+la distance la plus faible (≈0,12), ce qui signifie que son profil est
+très proche du profil moyen, tandis que l'Afghanistan (AFG) a la
+distance la plus élevée (≈11,02), indiquant un profil fortement
+atypique.
+
+Pour les causes, certaines présentent également des écarts importants :
+la cause C21 se distingue par une distance très élevée (≈60,83), ce qui
+suggère un profil extrêmement spécifique par rapport aux autres causes.
+Ces mesures permettent ainsi de détecter les pays et causes qui se
+rapprochent le plus du profil moyen et ceux qui s'en écartent fortement.
+
+La visualisation de ces distances, sous forme de diagrammes en barres
+verticales ou horizontales, facilite l'interprétation. Les barres les
+plus courtes correspondent aux profils proches de la moyenne, tandis que
+les barres plus longues signalent des profils atypiques. Cette
+représentation claire guide l'interprétation des plans factoriels
+précédemment étudiés et aide à identifier les modalités les plus
+influentes ou singulières dans l'analyse.
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-15-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-15-2.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-15-3.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{rapport_files/figure-pdf/unnamed-chunk-15-4.pdf}}
+
+\section{Conclusion}\label{conclusion}
+
+\textbf{Fatoumata}
+
+L'objectif de ce travail était d'étudier l'existence d'un lien entre les
+causes de décès et les pays, et d'identifier d'éventuelles similarités
+de profils de mortalité entre ces derniers, en mobilisant l'analyse
+factorielle des correspondances. Les résultats obtenus permettent
+d'apporter des réponses claires aux questions formulées en introduction.
+
+Tout d'abord, le test du khi-deux, complété par l'indice de V de Cramer,
+met en évidence l'existence d'une dépendance entre les pays et les
+causes de décès. Bien que cette dépendance demeure d'intensité modérée,
+elle est néanmoins significative et confirmée par la structure révélée
+par l'AFC. Cette analyse montre que les causes de décès ne se
+répartissent pas aléatoirement selon les pays, mais qu'elles sont
+associées à des profils nationaux spécifiques.
+
+L'examen du plan factoriel met en lumière des regroupements cohérents de
+pays présentant des profils de mortalité similaires. Les pays dits
+développés, majoritairement situés en Europe, en Amérique du Nord ou
+dans certaines régions d'Asie, apparaissent proches du profil moyen.
+Leur mortalité est principalement dominée par des maladies chroniques et
+dégénératives, telles que les maladies cardiovasculaires, les maladies
+neurologiques ou celles liées au vieillissement. À l'inverse, de
+nombreux pays africains se situent à distance du centre de gravité et
+présentent des profils proches les uns des autres, caractérisés par une
+forte prévalence de maladies infectieuses, de la malnutrition, ainsi que
+de décès liés aux conflits ou à l'instabilité politique. Ces causes,
+fortement contributrices aux axes factoriels, expliquent une part
+importante de la dépendance observée. De manière similaire, certains
+pays en situation de crise hors du continent africain, tels que
+l'Afghanistan ou le Yémen, se distinguent également par des profils très
+éloignés du profil moyen, en lien avec des causes de mortalité
+spécifiques comme les conflits armés, le terrorisme, le paludisme ou le
+VIH.
+
+Ainsi, les résultats obtenus apparaissent globalement cohérents avec le
+contexte géographique, géopolitique et socio-économique mondial. Ils
+confirment l'existence d'un lien entre le niveau de développement des
+pays et la structure de leur mortalité, ainsi que la présence de profils
+de décès similaires parmi des pays partageant des conditions de
+développement et de stabilité comparables. Ces observations doivent
+toutefois être interprétées avec prudence, au regard des limites liées à
+l'année étudiée et à l'agrégation des causes de décès.
+
+\textbf{Yester}
+
+L'analyse des données de mortalité par pays et par cause a permis
+d'illustrer la richesse et la diversité des profils de décès dans le
+monde. L'exploration initiale par diagrammes en barres a montré des
+différences marquées entre pays, notamment entre pays à revenu élevé et
+pays à revenu faible. Les profils lignes et colonnes ont permis de
+comparer les structures de mortalité de manière normalisée et
+d'identifier les causes et pays les plus contributifs à chaque axe
+factoriel.
+
+Le test du khi-deux a confirmé l'existence d'une dépendance statistique
+entre pays et causes de décès, bien que la force de cette liaison soit
+modérée. L'AFC a permis de synthétiser cette information dans un espace
+de faible dimension, en sélectionnant les axes les plus pertinents selon
+les critères de Kaiser et du bâton brisé. L'examen des plans factoriels,
+des contributions et des distances au centre de gravité a fourni une
+compréhension détaillée des profils atypiques et des similarités entre
+pays et causes.
+
+En conclusion, cette approche méthodologique a permis d'identifier les
+tendances globales et les particularités locales de la mortalité,
+fournissant une base solide pour des analyses comparatives et pour des
+prises de décision en santé publique. Les résultats mettent en évidence
+à la fois les déterminants communs et les spécificités nationales des
+causes de décès, illustrant l'intérêt des méthodes multivariées pour
+l'analyse de données de grande dimension.
+
+\section{Annexe}\label{annexe}
+
+\subsection{Source du jeu de données
+initiale}\label{source-du-jeu-de-donnuxe9es-initiale}
+
+URL :
+https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world
+
+\subsection{Tableau de l'encodage dzs différentes causes de
+décès}\label{tableau-de-lencodage-dzs-diffuxe9rentes-causes-de-duxe9cuxe8s}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Encodage des causes de décès}\tabularnewline
+\toprule\noalign{}
+Meningitis & C1 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Meningitis & C1 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Alzheimer's Disease and Other Dementias & C2 \\
+Parkinson's Disease & C3 \\
+Nutritional Deficiencies & C4 \\
+Malaria & C5 \\
+Drowning & C6 \\
+Interpersonal Violence & C7 \\
+Maternal Disorders & C8 \\
+HIV/AIDS & C9 \\
+Drug Use Disorders & C10 \\
+Tuberculosis & C11 \\
+Cardiovascular Diseases & C12 \\
+Lower Respiratory Infections & C13 \\
+Neonatal Disorders & C14 \\
+Alcohol Use Disorders & C15 \\
+Self-harm & C16 \\
+Exposure to Forces of Nature & C17 \\
+Diarrheal Diseases & C18 \\
+Environmental Heat and Cold Exposure & C19 \\
+Neoplasms & C20 \\
+Conflict and Terrorism & C21 \\
+Diabetes Mellitus & C22 \\
+Chronic Kidney Disease & C23 \\
+Poisonings & C24 \\
+Protein-Energy Malnutrition & C25 \\
+Road Injuries & C26 \\
+Chronic Respiratory Diseases & C27 \\
+Cirrhosis and Other Chronic Liver Diseases & C28 \\
+Digestive Diseases & C29 \\
+Fire, Heat, and Hot Substances & C30 \\
+Acute Hepatitis & C31 \\
+\end{longtable}
+
+
+
+
+\end{document}
