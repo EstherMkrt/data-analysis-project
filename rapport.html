@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.8.25" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-
-<meta name="author" content="MKRTCHYAN Yester, TOURE Fatoumata Salihou" />
+<meta name="author" content="MKRTCHYAN Yester, TOURE Fatoumata Salihou">
 
 <title>Analyse factorielle des correspondances des causes de décès par pays</title>
 <style>
@@ -25,16 +23,62 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="rapport_files/libs/clipboard/clipboard.min.js"></script>
+<script src="rapport_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="rapport_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="rapport_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="rapport_files/libs/quarto-html/popper.min.js"></script>
+<script src="rapport_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="rapport_files/libs/quarto-html/anchor.min.js"></script>
+<link href="rapport_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="rapport_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="rapport_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="rapport_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="rapport_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body>
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <div id="quarto-toc-target"></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays" id="toc-analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays" class="nav-link" data-scroll-target="#analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays"><span class="header-section-number">2</span> Analyse factorielle des correspondances des causes de décès par pays</a>
+  <ul class="collapse">
+  <li><a href="#préparation-des-données" id="toc-préparation-des-données" class="nav-link" data-scroll-target="#préparation-des-données"><span class="header-section-number">2.1</span> Préparation des données</a></li>
+  <li><a href="#analyse-exploratoire" id="toc-analyse-exploratoire" class="nav-link" data-scroll-target="#analyse-exploratoire"><span class="header-section-number">2.2</span> Analyse exploratoire</a>
+  <ul class="collapse">
+  <li><a href="#chargement-des-données" id="toc-chargement-des-données" class="nav-link" data-scroll-target="#chargement-des-données"><span class="header-section-number">2.2.1</span> Chargement des données</a></li>
+  <li><a href="#visualisation-des-données-par-barplots" id="toc-visualisation-des-données-par-barplots" class="nav-link" data-scroll-target="#visualisation-des-données-par-barplots"><span class="header-section-number">2.2.2</span> Visualisation des données par barplots</a></li>
+  <li><a href="#comparaison-de-pays" id="toc-comparaison-de-pays" class="nav-link" data-scroll-target="#comparaison-de-pays"><span class="header-section-number">2.2.3</span> Comparaison de pays</a></li>
+  <li><a href="#profils-ligne-et-colonne" id="toc-profils-ligne-et-colonne" class="nav-link" data-scroll-target="#profils-ligne-et-colonne"><span class="header-section-number">2.2.4</span> Profils ligne et colonne</a></li>
+  <li><a href="#comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" id="toc-comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" class="nav-link" data-scroll-target="#comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2"><span class="header-section-number">2.2.5</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></a></li>
+  </ul></li>
+  <li><a href="#analyses-avancées-afc-et-tests" id="toc-analyses-avancées-afc-et-tests" class="nav-link" data-scroll-target="#analyses-avancées-afc-et-tests"><span class="header-section-number">2.3</span> Analyses avancées ( AFC et Tests)</a>
+  <ul class="collapse">
+  <li><a href="#test-du-khi-deux-et-v-de-cramer" id="toc-test-du-khi-deux-et-v-de-cramer" class="nav-link" data-scroll-target="#test-du-khi-deux-et-v-de-cramer"><span class="header-section-number">2.3.1</span> Test du khi-deux et V de Cramer</a></li>
+  </ul></li>
+  <li><a href="#lancement-de-lafc" id="toc-lancement-de-lafc" class="nav-link" data-scroll-target="#lancement-de-lafc"><span class="header-section-number">2.4</span> Lancement de l’AFC</a>
+  <ul class="collapse">
+  <li><a href="#critère-du-bâton-brisé-pour-sélectionner-les-axes" id="toc-critère-du-bâton-brisé-pour-sélectionner-les-axes" class="nav-link" data-scroll-target="#critère-du-bâton-brisé-pour-sélectionner-les-axes"><span class="header-section-number">2.4.1</span> Critère du bâton brisé pour sélectionner les axes</a></li>
+  <li><a href="#analyse-des-contributions-des-lignes-et-colonnes" id="toc-analyse-des-contributions-des-lignes-et-colonnes" class="nav-link" data-scroll-target="#analyse-des-contributions-des-lignes-et-colonnes"><span class="header-section-number">2.4.2</span> Analyse des contributions des lignes et colonnes</a></li>
+  <li><a href="#distances-au-centre-de-gravité" id="toc-distances-au-centre-de-gravité" class="nav-link" data-scroll-target="#distances-au-centre-de-gravité"><span class="header-section-number">2.4.3</span> Distances au centre de gravité</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
+  <li><a href="#annexe" id="toc-annexe" class="nav-link" data-scroll-target="#annexe"><span class="header-section-number">4</span> Annexe</a>
+  <ul class="collapse">
+  <li><a href="#source-du-jeu-de-données-initiale" id="toc-source-du-jeu-de-données-initiale" class="nav-link" data-scroll-target="#source-du-jeu-de-données-initiale"><span class="header-section-number">4.1</span> Source du jeu de données initiale</a></li>
+  <li><a href="#tableau-de-lencodage-dzs-différentes-causes-de-décès" id="toc-tableau-de-lencodage-dzs-différentes-causes-de-décès" class="nav-link" data-scroll-target="#tableau-de-lencodage-dzs-différentes-causes-de-décès"><span class="header-section-number">4.2</span> Tableau de l’encodage dzs différentes causes de décès</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="rapport.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -62,41 +106,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays" id="toc-analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays"><span class="header-section-number">2</span> Analyse factorielle des correspondances des causes de décès par pays</a>
-  <ul>
-  <li><a href="#préparation-des-données" id="toc-préparation-des-données"><span class="header-section-number">2.1</span> Préparation des données</a></li>
-  <li><a href="#analyse-exploratoire" id="toc-analyse-exploratoire"><span class="header-section-number">2.2</span> Analyse exploratoire</a>
-  <ul>
-  <li><a href="#chargement-des-données" id="toc-chargement-des-données"><span class="header-section-number">2.2.1</span> Chargement des données</a></li>
-  <li><a href="#visualisation-des-données-par-barplots" id="toc-visualisation-des-données-par-barplots"><span class="header-section-number">2.2.2</span> Visualisation des données par barplots</a></li>
-  <li><a href="#comparaison-de-pays" id="toc-comparaison-de-pays"><span class="header-section-number">2.2.3</span> Comparaison de pays</a></li>
-  <li><a href="#profils-ligne-et-colonne" id="toc-profils-ligne-et-colonne"><span class="header-section-number">2.2.4</span> Profils ligne et colonne</a></li>
-  <li><a href="#comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" id="toc-comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2"><span class="header-section-number">2.2.5</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></a></li>
-  </ul></li>
-  <li><a href="#analyses-avancées-afc-et-tests" id="toc-analyses-avancées-afc-et-tests"><span class="header-section-number">2.3</span> Analyses avancées ( AFC et Tests)</a>
-  <ul>
-  <li><a href="#test-du-khi-deux-et-v-de-cramer" id="toc-test-du-khi-deux-et-v-de-cramer"><span class="header-section-number">2.3.1</span> Test du khi-deux et V de Cramer</a></li>
-  </ul></li>
-  <li><a href="#lancement-de-lafc" id="toc-lancement-de-lafc"><span class="header-section-number">2.4</span> Lancement de l’AFC</a>
-  <ul>
-  <li><a href="#critère-du-bâton-brisé-pour-sélectionner-les-axes" id="toc-critère-du-bâton-brisé-pour-sélectionner-les-axes"><span class="header-section-number">2.4.1</span> Critère du bâton brisé pour sélectionner les axes</a></li>
-  <li><a href="#analyse-des-contributions-des-lignes-et-colonnes" id="toc-analyse-des-contributions-des-lignes-et-colonnes"><span class="header-section-number">2.4.2</span> Analyse des contributions des lignes et colonnes</a></li>
-  <li><a href="#distances-au-centre-de-gravité" id="toc-distances-au-centre-de-gravité"><span class="header-section-number">2.4.3</span> Distances au centre de gravité</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
-  <li><a href="#annexe" id="toc-annexe"><span class="header-section-number">4</span> Annexe</a>
-  <ul>
-  <li><a href="#source-du-jeu-de-données-initiale" id="toc-source-du-jeu-de-données-initiale"><span class="header-section-number">4.1</span> Source du jeu de données initiale</a></li>
-  <li><a href="#tableau-de-lencodage-dzs-différentes-causes-de-décès" id="toc-tableau-de-lencodage-dzs-différentes-causes-de-décès"><span class="header-section-number">4.2</span> Tableau de l’encodage dzs différentes causes de décès</a></li>
-  </ul></li>
-  </ul>
-</nav>
+
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : <em>Existe-t-il un lien entre le niveau de développement des pays et les différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?</em> Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.</p>
@@ -104,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="analyse-factorielle-des-correspondances-des-causes-de-décès-par-pays" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Analyse factorielle des correspondances des causes de décès par pays</h1>
 <section id="préparation-des-données" class="level2" data-number="2.1">
-<h2 data-number="2.1"><span class="header-section-number">2.1</span> Préparation des données</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="préparation-des-données"><span class="header-section-number">2.1</span> Préparation des données</h2>
 <p>Pour cette analyse, nous avons utilisé un jeu de données disponible sur Kaggle, portant sur les causes de mortalité dans le monde dont le lien se trouve en annexe. Le jeu de données original couvre la période 1990 à 2019 et recense les effectifs de décès pour 204 pays et territoires, organisés sous la forme d’un tableau pays × causes de décès.</p>
 <p>Afin de concentrer l’étude sur l’année la plus récente, nous avons extrait uniquement les observations de 2019. Une vérification préalable a confirmé l’absence de valeurs manquantes dans les variables retenues. Les données extraites ont ensuite été enregistrées dans un nouveau fichier CSV, distinct du fichier initial.</p>
 <p>La variable correspondant à l’année a été supprimée du fait que toutes les lignes concernent 2019. De même, parmi les deux colonnes descriptives des pays (nom complet et abréviation), seule la colonne des abréviations a été conservée, les correspondances avec les noms complets étant stockées dans un fichier séparé.</p>
@@ -112,20 +122,20 @@ ul.task-list li input[type="checkbox"] {
 <p>Le jeu de données final comporte ainsi 204 lignes correspondant aux abréviations des pays et territoires, et des colonnes représentant les différentes causes de décès encodées, avec pour valeurs les effectifs observés. En étant deux variables qualitatives il convient de procéder à une AFC.</p>
 </section>
 <section id="analyse-exploratoire" class="level2" data-number="2.2">
-<h2 data-number="2.2"><span class="header-section-number">2.2</span> Analyse exploratoire</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="analyse-exploratoire"><span class="header-section-number">2.2</span> Analyse exploratoire</h2>
 <section id="chargement-des-données" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1"><span class="header-section-number">2.2.1</span> Chargement des données</h3>
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="chargement-des-données"><span class="header-section-number">2.2.1</span> Chargement des données</h3>
 <p>La première étape de l’analyse consiste à charger les librairies nécessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.</p>
 <p>Au moment du chargement de données, la première colonne du jeu de données est désigné comme étant la colonne d’identification des lignes et elle est ensuite supprimée, afin de ne conserver que les causes de décès sous forme numérique. Cette étape permet de faciliter les traitements ultérieurs et l’accès direct aux informations par pays.</p>
 <p>Le jeu de données obtenu est stocké dans la variable “morts” pour le reste de l’analyse. Une vérification du jeu de données à l’aide de l’affichage des premières lignes confirme la bonne manipulation des données et l’absence d’anomalies apparentes.</p>
 </section>
 <section id="visualisation-des-données-par-barplots" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2"><span class="header-section-number">2.2.2</span> Visualisation des données par barplots</h3>
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="visualisation-des-données-par-barplots"><span class="header-section-number">2.2.2</span> Visualisation des données par barplots</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -133,8 +143,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -142,37 +152,37 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 <section id="comparaison-de-pays" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3"><span class="header-section-number">2.2.3</span> Comparaison de pays</h3>
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="comparaison-de-pays"><span class="header-section-number">2.2.3</span> Comparaison de pays</h3>
 <p>Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant le nombre de décès par cause respectivement en Arménie, au Mali et en France. Ces représentations graphiques ont pour objectif de comparer la structure de la mortalité selon les principales causes de décès dans chacun des pays étudiés.</p>
 <p>Les causes de décès sont représentées sur l’axe des ordonnées, tandis que l’axe des abscisses indique le nombre de morts. Ce choix de visualisation permet une lecture claire et facilite la comparaison entre catégories.</p>
 <p>L’analyse met en évidence des profils de mortalité contrastés. En Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables de plus de 12 000 décès, tandis que le néoplasme (C20) en représente environ 6 000. En France, ces mêmes causes figurent également parmi les principales causes de mortalité, avec plus de 15 000 décès pour le néoplasme et environ 20 000 pour la cause cardiovasculaires. À l’inverse, au Mali, les maladies transmissibles ainsi que certaines maladies infectueuses occupent une place plus importante dans la mortalité totale : les entraîné environ 32 000 décès, les maladies cardiovasculaires (C12) près de 20 000 décès, et l’automutilation et la malnutrition (C18 et C25) environ 14 000 décès chacune.</p>
 <p>Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.</p>
 </section>
 <section id="profils-ligne-et-colonne" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4"><span class="header-section-number">2.2.4</span> Profils ligne et colonne</h3>
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="profils-ligne-et-colonne"><span class="header-section-number">2.2.4</span> Profils ligne et colonne</h3>
 <p>Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+…+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top">
+<table class="caption-top table table-sm table-striped small">
 <caption>Profils lignes pour quelques pays et causes sélectionnés</caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -280,18 +290,18 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table class="caption-top table table-sm table-striped small">
 <caption>Profils colonnes pour quelques pays et causes sélectionnés</caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
+<col style="width: 4%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -402,20 +412,20 @@ ul.task-list li input[type="checkbox"] {
 <p>De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66% (0.0066= 1563/(1563 +13+…+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.</p>
 </section>
 <section id="comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5"><span class="header-section-number">2.2.5</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></h3>
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="comparaison-des-pays-graphiques-de-profils-ligne-et-colonnes-avec-ggplot2"><span class="header-section-number">2.2.5</span> Comparaison des pays, graphiques de profils ligne et colonnes avec <code>ggplot2</code></h3>
 <p>Les profils lignes sont ensuite représentés graphiquement afin de faciliter l’interprétation. Le profil ligne de la France met en évidence la prédominance des maladies non infectueuses dans la structure de la mortalité, confirmant les observations issues de l’analyse par diagrammes en barres. Une comparaison des profils lignes de la France et du Mali souligne des contrastes marqués : la France présente une concentration plus forte des décès sur les maladies chroniques, tandis que le Mali affiche une part relativement plus importante de maladies infectueuses et de causes évitables. Ces différences traduisent des stades distincts de transition épidémiologique et fournissent une base pertinente pour des analyses multivariées ultérieures, telles que l’analyse des correspondances.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -423,9 +433,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="analyses-avancées-afc-et-tests" class="level2" data-number="2.3">
-<h2 data-number="2.3"><span class="header-section-number">2.3</span> Analyses avancées ( AFC et Tests)</h2>
+<h2 data-number="2.3" class="anchored" data-anchor-id="analyses-avancées-afc-et-tests"><span class="header-section-number">2.3</span> Analyses avancées ( AFC et Tests)</h2>
 <section id="test-du-khi-deux-et-v-de-cramer" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1"><span class="header-section-number">2.3.1</span> Test du khi-deux et V de Cramer</h3>
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="test-du-khi-deux-et-v-de-cramer"><span class="header-section-number">2.3.1</span> Test du khi-deux et V de Cramer</h3>
 <p>Afin d’évaluer statistiquement l’existence d’un lien entre les pays et les causes de décès, un test du khi-deux d’indépendance est réalisé à partir du tableau de contingence. L’hypothèse nulle H0 suppose l’indépendance entre le pays et la cause de décès, tandis que l’hypothèse alternative H1 postule l’existence d’une dépendance entre ces deux variables.</p>
 <p>Le test met en évidence une statistique du khi-deux très élevée (36 396 969) associée à une p-value nulle, conduisant au rejet de l’hypothèse d’indépendance au seuil usuel. Cela suggère que la répartition des causes de décès diffère significativement selon les pays considérés. Toutefois, l’interprétation de ce résultat doit être nuancée, car la structure du tableau, notamment la présence de nombreux effectifs élevés et de fortes disparités entre pays limite la pertinence stricte du test du khi-deux.</p>
 <p>Afin de quantifier l’intensité de la liaison entre les deux variables, le coefficient de V de Cramér est calculé. La valeur obtenue étant 0.149 indique une liaison faible entre le pays et la cause de décès, malgré le rejet de l’hypothèse d’indépendance. Ce résultat souligne que la dépendance statistique observée est réelle mais modérée.</p>
@@ -434,27 +444,27 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="lancement-de-lafc" class="level2" data-number="2.4">
-<h2 data-number="2.4"><span class="header-section-number">2.4</span> Lancement de l’AFC</h2>
+<h2 data-number="2.4" class="anchored" data-anchor-id="lancement-de-lafc"><span class="header-section-number">2.4</span> Lancement de l’AFC</h2>
 <p>Pour explorer les relations entre les pays et les causes de décès, une analyse factorielle des correspondances (AFC) est réalisée. Cette méthode multivariée est particulièrement adaptée aux tableaux de contingence et permet de visualiser les dépendances entre lignes (pays) et colonnes (causes) tout en réduisant la dimensionnalité des données.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -464,22 +474,22 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de visualiser la contribution relative de chaque axe à la structure globale des données, préparant ainsi l’interprétation des positions des pays et des causes sur les plans factoriels. Cette étape constitue un prérequis essentiel avant de produire les représentations graphiques des individus et des variables dans l’espace factoriel.</p>
 <section id="critère-du-bâton-brisé-pour-sélectionner-les-axes" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1"><span class="header-section-number">2.4.1</span> Critère du bâton brisé pour sélectionner les axes</h3>
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="critère-du-bâton-brisé-pour-sélectionner-les-axes"><span class="header-section-number">2.4.1</span> Critère du bâton brisé pour sélectionner les axes</h3>
 <p>Pour compléter l’identification des axes significatifs, le critère du bâton brisé est utilisé. Les valeurs propres observées sont ainsi mises en relation avec les proportions théoriques du bâton brisé, permettant de distinguer les axes apportant une information réelle de ceux qui ne contiennent qu’un bruit statistique.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -492,8 +502,8 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -502,27 +512,27 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <p>Un diagramme comparatif illustre visuellement la sélection des axes : les barres rouges représentant l’inertie observée sont mises côte à côte avec celles du bâton brisé, représentées en bleu. Cette représentation permet de visualiser aisément quels axes dépassent le seuil et confirment leur pertinence pour l’étude des relations entre les pays et les causes de décès. Ce critère identifiant moins d’axes pertinents que le critère de Kaiser, son résultat sera privilégié pour la suite de l’analyse.</p>
 </section>
 <section id="analyse-des-contributions-des-lignes-et-colonnes" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2"><span class="header-section-number">2.4.2</span> Analyse des contributions des lignes et colonnes</h3>
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="analyse-des-contributions-des-lignes-et-colonnes"><span class="header-section-number">2.4.2</span> Analyse des contributions des lignes et colonnes</h3>
 <p>Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, comme Djibouti et le Congo, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays. Par exemple, les troubles néonatals (C14), troubles maternels (C8) et maladies diarrhéiques(C18) apparaissent proches sur le graphique, suggérant qu’elles sont présentes dans des proportions comparables dans les mêmes pays. À l’inverse, la malaria (C5), très éloignée de l’origine et des autres modalités, présente un profil fortement spécifique, caractéristique d’un nombre limité de pays.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -532,36 +542,36 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-12-5.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-12-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -570,57 +580,57 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-13-8.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-13-8.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -629,36 +639,36 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-14-4.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-14-5.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-14-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -666,36 +676,36 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <p>Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.</p>
 </section>
 <section id="distances-au-centre-de-gravité" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3"><span class="header-section-number">2.4.3</span> Distances au centre de gravité</h3>
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="distances-au-centre-de-gravité"><span class="header-section-number">2.4.3</span> Distances au centre de gravité</h3>
 <p>L’AFC permet de mesurer l’écart de chaque pays ou cause par rapport au profil moyen à travers la distance au centre de gravité (barycentre). Cette distance est calculée en rapportant l’inertie de chaque modalité à sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente la distance la plus faible (≈0,12), ce qui signifie que son profil est très proche du profil moyen, tandis que l’Afghanistan (AFG) a la distance la plus élevée (≈11,02), indiquant un profil fortement atypique.</p>
 <p>Pour les causes, certaines présentent également des écarts importants : la cause C21 se distingue par une distance très élevée (≈60,83), ce qui suggère un profil extrêmement spécifique par rapport aux autres causes. Ces mesures permettent ainsi de détecter les pays et causes qui se rapprochent le plus du profil moyen et ceux qui s’en écartent fortement.</p>
 <p>La visualisation de ces distances, sous forme de diagrammes en barres verticales ou horizontales, facilite l’interprétation. Les barres les plus courtes correspondent aux profils proches de la moyenne, tandis que les barres plus longues signalent des profils atypiques. Cette représentation claire guide l’interprétation des plans factoriels précédemment étudiés et aide à identifier les modalités les plus influentes ou singulières dans l’analyse.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="rapport_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="rapport_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -718,14 +728,14 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 <section id="annexe" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Annexe</h1>
 <section id="source-du-jeu-de-données-initiale" class="level2" data-number="4.1">
-<h2 data-number="4.1"><span class="header-section-number">4.1</span> Source du jeu de données initiale</h2>
+<h2 data-number="4.1" class="anchored" data-anchor-id="source-du-jeu-de-données-initiale"><span class="header-section-number">4.1</span> Source du jeu de données initiale</h2>
 <p>URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world</p>
 </section>
 <section id="tableau-de-lencodage-dzs-différentes-causes-de-décès" class="level2" data-number="4.2">
-<h2 data-number="4.2"><span class="header-section-number">4.2</span> Tableau de l’encodage dzs différentes causes de décès</h2>
+<h2 data-number="4.2" class="anchored" data-anchor-id="tableau-de-lencodage-dzs-différentes-causes-de-décès"><span class="header-section-number">4.2</span> Tableau de l’encodage dzs différentes causes de décès</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top">
+<table class="caption-top table table-sm table-striped small">
 <caption>Encodage des causes de décès</caption>
 <thead>
 <tr class="header">
@@ -863,7 +873,7 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
 
 </main>
 <!-- /main column -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1265,6 +1275,7 @@ dim 23 dim 24 dim 25 dim 26 dim 27 dim 28 dim 29 dim 30
   </script>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>
