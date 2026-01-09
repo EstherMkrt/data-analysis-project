@@ -568,7 +568,7 @@ fviz_contrib(pres.afc, choice = "col", axes=4)+
 
 ```
 
-La qualité de représentation de chaque modalité est évaluée à l’aide du cos², qui mesure la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités présentant un cos² élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Pour rendre les graphiques plus lisibles, nous avons d’abord filtré les modalités avec un cos² supérieur à 0,7, garantissant ainsi que seules celles bien expliquées par les axes sont affichées. Parmi ces modalités, les 50 mieux représentées ont été sélectionnées pour produire un graphique final. Ce dernier utilise un code couleur : les modalités les mieux représentées, avec un cos² proche de 1, apparaissent en couleur claire, tandis que celles avec un cos² proche de 0,7 apparaissent en couleur plus foncée.
+La qualité de représentation de chaque modalité est évaluée à l’aide du cos², qui mesure la proportion de la variance de la modalité expliquée par les axes retenus. Les modalités présentant un cos² élevé sont mieux représentées sur le plan factoriel et constituent des points de référence fiables pour l’interprétation. Pour rendre les graphiques plus lisibles, nous avons d’abord filtré les modalités avec un cos² supérieur à 0,7, garantissant ainsi que seules celles bien expliquées par les axes sont affichées. Ensuite un second filtrage a permis de sélectionner les 50 mieux représentées pour produire un autre graphique. Ces derniers utilisent un code couleur : les modalités les mieux représentées, avec un cos² proche de 1, apparaissent en couleur claire, tandis que celles avec un cos² proche de 0,7 apparaissent en couleur plus foncée.
 
 ```{r}
 #| echo: false
