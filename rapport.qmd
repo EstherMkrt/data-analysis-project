@@ -276,7 +276,6 @@ Afin de quantifier l’intensité de la liaison entre les deux variables, le coe
 
 Sous l'hypothèse d'indépendance, les profils attendus pour différents pays sont égaux. Nous le confirmons avec les exemples de la France et du Mali.
 
-
 ```{r}
 #| echo: false
 #| warning: false
@@ -692,11 +691,6 @@ ggplot(dafr, aes(x=reorder(row.names(dafr), -distance), y=distance)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1)) +
   labs(title="Distance au barycentre", x ="Pays", y = "Distance")
 
-# Barres horizontales
-ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
-  geom_col(fill = "steelblue") +
-  theme_grey(base_size = 7) +
-  labs(title="Distance au barycentre", y ="Pays", x = "Distance")
 
 
 
