@@ -1,6 +1,6 @@
 ---
 title: "Analyse factorielle des correspondances des causes de décès par pays"
-author: "Mkrtchyan, Toure"
+author: "MKRTCHYAN Yester, TOURE Fatoumata Salihou"
 format:
   html:
     toc: true
@@ -48,9 +48,9 @@ library(knitr)
 
 ```
 
-# Analyse exploratoire
+## Analyse exploratoire
 
-## Chargement des données
+### Chargement des données
 
 La première étape de l'analyse consiste à charger les librairies nécessaires ainsi que le jeu de données à analyser dans le script R qui est le fichier CSV nettoyé. Après l’importation, une première visualisation globale du tableau est réalisée afin de vérifier la structure des données et la cohérence des variables.
 
@@ -58,10 +58,7 @@ Au moment du chargement de données, la première colonne du jeu de données est
 
 Le jeu de données obtenu est stocké dans la variable "morts" pour le reste de l'analyse. Une vérification du jeu de données à l’aide de l’affichage des premières lignes confirme la bonne manipulation des données et l’absence d’anomalies apparentes.
 
-## 
-
-## Visualisation des données par barplots
-
+### Visualisation des données par barplots
 
 ```{r}
 #| echo: false
@@ -97,8 +94,6 @@ barplot(
 )
 ```
 
-
-
 ```{r}
 #| echo: false
 #| warning: false
@@ -119,8 +114,6 @@ barplot(
 )
 ```
 
-
-
 ```{r}
 #| echo: false
 
@@ -139,7 +132,7 @@ barplot(
 )
 ```
 
-## Comparaison de pays
+### Comparaison de pays
 
 Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant le nombre de décès par cause respectivement en Arménie, au Mali et en France. Ces représentations graphiques ont pour objectif de comparer la structure de la mortalité selon les principales causes de décès dans chacun des pays étudiés.
 
@@ -149,7 +142,7 @@ L’analyse met en évidence des profils de mortalité contrastés. En Arménie,
 
 Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
 
-## Profils ligne et colonne
+### Profils ligne et colonne
 
 Afin d’approfondir l’analyse descriptive, des profils lignes et des profils colonnes ont été construits à partir du tableau de contingence des décès par cause et par pays. Le profil ligne d’un pays correspond à la répartition relative des causes de décès à l’intérieur de ce pays : chaque valeur représente la proportion d’une cause donnée parmi l’ensemble des décès du pays considéré. Par exemple, en Afghanistan la meningite reperesente 0.7% des causes des décès en 2019 (0.007 = 1563/(1563+1775+...+485 +1940)). Ainsi, la somme des proportions sur une ligne est égale à 1, ce qui permet de comparer les structures de mortalité indépendamment du niveau absolu de mortalité.
 
@@ -204,7 +197,7 @@ kable(
 
 De manière complémentaire, les profils colonnes décrivent, pour chaque cause de décès, la répartition relative des pays. Chaque valeur indique la contribution d’un pays donné au total des décès observés pour une cause spécifique . En 2019, l’Afghanistan représentait 0,66% (0.0066= 1563/(1563 +13+...+2065+1450))de la mortalité mondiale due à la méningite. Là encore, la normalisation par colonne permet de comparer les pays entre eux pour une cause donnée, sans être influencé par les différences globales de population ou de mortalité.
 
-## Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
+### Comparaison des pays, graphiques de profils ligne et colonnes avec `ggplot2`
 
 Les profils lignes sont ensuite représentés graphiquement afin de faciliter l’interprétation. Le profil ligne de la France met en évidence la prédominance des maladies non infectueuses dans la structure de la mortalité, confirmant les observations issues de l’analyse par diagrammes en barres. Une comparaison des profils lignes de la France et du Mali souligne des contrastes marqués : la France présente une concentration plus forte des décès sur les maladies chroniques, tandis que le Mali affiche une part relativement plus importante de maladies infectueuses et de causes évitables. Ces différences traduisent des stades distincts de transition épidémiologique et fournissent une base pertinente pour des analyses multivariées ultérieures, telles que l’analyse des correspondances.
 
@@ -267,11 +260,9 @@ ggplot(profils_deux_long, aes(x = Variable, y = Profil, fill = Pays)) +
 
 ```
 
-## 
+## Analyses avancées ( AFC et Tests)
 
-# Analyses avancées ( AFC et Tests)
-
-## Test du khi-deux et V de Cramer
+### Test du khi-deux et V de Cramer
 
 Afin d’évaluer statistiquement l’existence d’un lien entre les pays et les causes de décès, un test du khi-deux d’indépendance est réalisé à partir du tableau de contingence. L’hypothèse nulle H0 suppose l’indépendance entre le pays et la cause de décès, tandis que l’hypothèse alternative H1 postule l’existence d’une dépendance entre ces deux variables.
 
@@ -416,7 +407,7 @@ barplot(
 
 Les diagrammes de l’inertie totale et du pourcentage d’inertie permettent de visualiser la contribution relative de chaque axe à la structure globale des données, préparant ainsi l’interprétation des positions des pays et des causes sur les plans factoriels. Cette étape constitue un prérequis essentiel avant de produire les représentations graphiques des individus et des variables dans l’espace factoriel.
 
-## Critère du bâton brisé pour sélectionner les axes
+### Critère du bâton brisé pour sélectionner les axes
 
 Pour compléter l’identification des axes significatifs, le critère du bâton brisé est utilisé. Les valeurs propres observées sont ainsi mises en relation avec les proportions théoriques du bâton brisé, permettant de distinguer les axes apportant une information réelle de ceux qui ne contiennent qu’un bruit statistique.
 
@@ -467,12 +458,9 @@ La comparaison numérique indique que les axes dont l’inertie observée dépas
 
 Un diagramme comparatif illustre visuellement la sélection des axes : les barres rouges représentant l’inertie observée sont mises côte à côte avec celles du bâton brisé, représentées en bleu. Cette représentation permet de visualiser aisément quels axes dépassent le seuil et confirment leur pertinence pour l’étude des relations entre les pays et les causes de décès. Ce critère identifiant moins d’axes pertinents que le critère de Kaiser, son résultat sera privilégié pour la suite de l’analyse.
 
-## Analyse des contributions des lignes et colonnes 
+### Analyse des contributions des lignes et colonnes
 
 Après sélection des axes significatifs, l’AFC permet de représenter les modalités des lignes (pays) et des colonnes (causes) dans l’espace factoriel. Les diagrammes factoriels des lignes et des colonnes mettent en évidence les similitudes et les différences structurelles : les pays proches sur le plan factoriel présentent des profils de mortalité similaires, comme Djibouti et le Congo, tandis que les causes de décès rapprochées indiquent une co-occurrence relative dans différents pays. Par exemple, les troubles néonatals (C14), troubles maternels (C8) et maladies diarrhéiques(C18) apparaissent proches sur le graphique, suggérant qu’elles sont présentes dans des proportions comparables dans les mêmes pays. À l’inverse, la malaria (C5), très éloignée de l’origine et des autres modalités, présente un profil fortement spécifique, caractéristique d’un nombre limité de pays.
-
-
-
 
 ```{r}
 #| echo: false
@@ -496,12 +484,9 @@ fviz_ca_biplot(pres.afc, axes = c(1,2), repel = T)+
 
 ```
 
-
-
 Les biplots combinant simultanément les modalités des lignes (pays) et des colonnes (causes) permettent de visualiser les relations entre pays et causes de décès sur différents plans factoriels. Le premier plan factoriel, défini par les axes 1 et 2, est le plus informatif, concentrant une part importante de l’inertie totale avec 43 % pour l’axe 1 et 13,2 % pour l’axe 2. Il permet d’identifier les groupes de pays aux profils de mortalité similaires ainsi que les causes de décès les plus structurantes.
 
 Les plans factoriels secondaires, explorés grâce aux combinaisons d’axes 1-3, 1-4, 3-2, 4-2 et 4-3, apportent des informations complémentaires sur les dimensions moins dominantes. Par exemple, le plan 1-3 explique 43 % et 10,5 % de l’inertie, le plan 1-4 contribue à 43 % et 8,7 %, et les autres plans permettent de mettre en évidence des variations supplémentaires entre pays et causes de décès. L’option repel = T utilisée dans les biplots améliore la lisibilité en évitant le chevauchement des étiquettes. L’analyse combinée de ces différents plans factoriels permet ainsi de mettre en évidence à la fois les structures principales et les relations secondaires dans les données.
-
 
 ```{r}
 #| echo: false
@@ -606,7 +591,7 @@ fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
 Cette analyse graphique et quantitative des contributions et de la qualité de représentation fournit une base solide pour tirer des conclusions sur les profils de mortalité et les relations entre pays et causes dans l’ensemble du jeu de données.
 
-## Distances au centre de gravité
+### Distances au centre de gravité
 
 L’AFC permet de mesurer l’écart de chaque pays ou cause par rapport au profil moyen à travers la distance au centre de gravité (barycentre). Cette distance est calculée en rapportant l’inertie de chaque modalité à sa masse. Par exemple, dans notre analyse, le Bangladesh (BGD) présente la distance la plus faible (≈0,12), ce qui signifie que son profil est très proche du profil moyen, tandis que l’Afghanistan (AFG) a la distance la plus élevée (≈11,02), indiquant un profil fortement atypique.
 
@@ -662,7 +647,6 @@ ggplot(dafr, aes(y=reorder(row.names(dafr), -distance), x=distance)) +
 
 ```
 
-
 # Conclusion
 
 **Fatoumata**
@@ -673,9 +657,7 @@ Tout d’abord, le test du khi-deux, complété par l’indice de V de Cramer, m
 
 L’examen du plan factoriel met en lumière des regroupements cohérents de pays présentant des profils de mortalité similaires. Les pays dits développés, majoritairement situés en Europe, en Amérique du Nord ou dans certaines régions d’Asie, apparaissent proches du profil moyen. Leur mortalité est principalement dominée par des maladies chroniques et dégénératives, telles que les maladies cardiovasculaires, les maladies neurologiques ou celles liées au vieillissement. À l’inverse, de nombreux pays africains se situent à distance du centre de gravité et présentent des profils proches les uns des autres, caractérisés par une forte prévalence de maladies infectieuses, de la malnutrition, ainsi que de décès liés aux conflits ou à l’instabilité politique. Ces causes, fortement contributrices aux axes factoriels, expliquent une part importante de la dépendance observée. De manière similaire, certains pays en situation de crise hors du continent africain, tels que l’Afghanistan ou le Yémen, se distinguent également par des profils très éloignés du profil moyen, en lien avec des causes de mortalité spécifiques comme les conflits armés, le terrorisme, le paludisme ou le VIH.
 
-Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables.
-Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.
-
+Ainsi, les résultats obtenus apparaissent globalement cohérents avec le contexte géographique, géopolitique et socio-économique mondial. Ils confirment l’existence d’un lien entre le niveau de développement des pays et la structure de leur mortalité, ainsi que la présence de profils de décès similaires parmi des pays partageant des conditions de développement et de stabilité comparables. Ces observations doivent toutefois être interprétées avec prudence, au regard des limites liées à l’année étudiée et à l’agrégation des causes de décès.
 
 **Yester**
 
@@ -693,7 +675,6 @@ URL : https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-t
 
 ## Tableau de l'encodage dzs différentes causes de décès
 
-
 ```{r}
 #| echo: false 
 #| warning: false
@@ -706,4 +687,3 @@ kable(
 )
 
 ```
-
