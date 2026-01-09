@@ -406,7 +406,7 @@ fviz_ca_biplot(pres.afc, col.col="cos2", repel = T)
 
 # En filtrant sur un cos2 > 0.7
 fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 0.7), repel = T)
-# En filtrant sur les 20 meilleurs cos2
+# En filtrant sur les 50 meilleurs cos2
 fviz_ca_row(pres.afc, col.row = "cos2", select.row = list(cos2 = 50), repel = T)
 
 
