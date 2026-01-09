@@ -276,7 +276,43 @@ Afin de quantifier l’intensité de la liaison entre les deux variables, le coe
 
 Sous l'hypothèse d'indépendance, les profils attendus pour différents pays sont égaux. Nous le confirmons avec les exemples de la France et du Mali.
 
-###resu.chi2$expected["FRA",] / sum(resu.chi2$expected\["FRA",\]) resu.chi2$expected["MLI",] / sum(resu.chi2$expected\["MLI",\])
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+resu.chi2 <- chisq.test(morts[1:204,])
+
+resu.chi2 <- suppressWarnings(chisq.test(morts[1:204, ]))
+
+
+# P-value 
+
+
+# la structure du tableau ne permet pas vraiment de faire un test du ki deux, 
+# on peut directement faire une AFC pour explorer les dépendances
+
+
+# V Cramer
+
+# effectifs attendus sous hyp d'indépendance : effectif théorique
+
+resu.chi2$expected[1:5, 1:3]
+
+tab_exp <- resu.chi2$expected[1:8, 1:8]
+
+
+knitr::kable(
+  tab_exp,
+  caption = "Résidus attendus (extrait)",
+  booktabs = TRUE,
+  align = "c"
+)
+
+
+```
 
 L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi que des résidus standardisés permet d’identifier les principales contributions au khi-deux. Ces écarts traduisent des phénomènes d’attirance et de répulsion : un résidu standardisé positif indique qu’un pays et une cause se rencontrent plus fréquemment que prévu (attirance), tandis qu’un résidu standardisé négatif montre une occurrence moindre que prévu (répulsion). Un résidu supérieur à 2 ou inférieur à −2 est généralement considéré comme significatif.
 
@@ -286,7 +322,17 @@ L’examen des effectifs attendus sous l’hypothèse d’indépendance ainsi qu
 #| message: false
 
  # Le tableau des résidus
-resu.chi2$stdres
+
+
+tab_stdres <- resu.chi2$stdres[1:8, 1:8]
+
+
+knitr::kable(
+  tab_stdres,
+  caption = "Résidus standardisés (extrait)",
+  booktabs = TRUE,
+  align = "c"
+)
 
 ```
 
