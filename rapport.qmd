@@ -14,7 +14,9 @@ editor: visual
 
 # Introduction
 
-En 2019, en Afrique subsaharienne, les maladies non transmissibles représentent environ 35 à 40 % des décès chez les adultes, d’après les données mondiales de l’OMS. Intuitivement, les infections pourraient pourtant être considérées comme dominantes, compte tenu du niveau de développement des pays. Cela soulève plusieurs questions centrales pour l’analyse : *Existe-t-il un lien entre le niveau de développement des pays et les différentes causes de décès ? Quels pays présentent des profils similaires de mortalité ?* Afin d’y répondre rigoureusement, il est pertinent de réaliser une Analyse Factorielle des Correspondances (AFC) sur les données enregistrées.
+**Yester**
+
+C’est John Graunt, tailleur de son état, qui a réalisé l’une des premières tentatives d’exploitation des registres paroissiaux de décès en Angleterre et au pays de Galles. Ces registres, au nombre de 10 000, contenaient des informations sur le sexe, l’âge et la cause supposée de la mort. L’une des contributions majeures de cette époque à l’analyse des données de décès fut la construction des tables de vie, également appelées tables de vitalité, suggérées initialement par John Graunt et mises en œuvre par Edmund Halley. Le premier recensement anglais a permis de collecter des informations détaillées sur le nombre de décès par maladie et a mis en lumière les conditions sanitaires souvent déplorables dans les villes. Ainsi, les données sur la santé ont toujours constitué un élément central de l’analyse statistique. Le souhait de mesurer et d’évaluer la santé nationale a été le moteur de la mise en place des premiers systèmes d’analyse statistique. Aujourd’hui encore, des questions se posent sur le lien entre le niveau de développement des pays et les causes de décès, ainsi que sur les similarités entre pays. Pour y répondre, nous allons réaliser une analyse factorielle des correspondances à partir de données de 2019 concernant 204 pays et 31 causes de décès.
 
 # Analyse factorielle des correspondances des causes de décès par pays
 
