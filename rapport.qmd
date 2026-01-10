@@ -14,9 +14,12 @@ editor: visual
 
 # Introduction
 
-**Yester**
 
-C’est John Graunt, tailleur de son état, qui a réalisé l’une des premières tentatives d’exploitation des registres paroissiaux de décès en Angleterre et au pays de Galles. Ces registres, au nombre de 10 000, contenaient des informations sur le sexe, l’âge et la cause supposée de la mort. L’une des contributions majeures de cette époque à l’analyse des données de décès fut la construction des tables de vie, également appelées tables de vitalité, suggérées initialement par John Graunt et mises en œuvre par Edmund Halley. Le premier recensement anglais a permis de collecter des informations détaillées sur le nombre de décès par maladie et a mis en lumière les conditions sanitaires souvent déplorables dans les villes. Ainsi, les données sur la santé ont toujours constitué un élément central de l’analyse statistique. Le souhait de mesurer et d’évaluer la santé nationale a été le moteur de la mise en place des premiers systèmes d’analyse statistique. Aujourd’hui encore, des questions se posent sur le lien entre le niveau de développement des pays et les causes de décès, ainsi que sur les similarités entre pays. Pour y répondre, nous allons réaliser une analyse factorielle des correspondances à partir de données de 2019 concernant 204 pays et 31 causes de décès.
+Les données sur la santé ont toujours constitué un élément central de l’analyse statistique. Le souhait de mesurer et d’évaluer la santé nationale a été le moteur de la mise en place des premiers systèmes d’analyse statistique. La répartition des causes de décès constituent notamment un indicateur central de l’état de santé des populations. Cette répartition présente toutefois de fortes disparités selon les pays et les régions du monde, reflétant la diversité des contextes sanitaires, démographiques et sociaux.
+À partir des données mondiales de 2019 relatives aux causes de décès, ce projet propose une analyse comparative des pays afin d’étudier la structure de leurs profils de mortalité. Il vise, d’une part, à examiner l’existence éventuelle de relations entre les causes de décès et certaines caractéristiques globales des pays, telles que leur niveau de développement, et, d’autre part, à identifier des groupes de pays présentant des profils de mortalité similaires. Cette approche permet ainsi de mettre en évidence des proximités ou des oppositions entre pays au regard de la répartition des causes de décès.
+L’analyse repose sur la mise en œuvre d’une Analyse Factorielle des Correspondances appliquée aux données considérées.
+
+
 
 # Analyse factorielle des correspondances des causes de décès par pays
 
