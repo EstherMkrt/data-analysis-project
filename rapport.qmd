@@ -12,7 +12,9 @@ format:
 editor: visual
 ---
 
-# Introduction
+\pagebreak
+
+# Introductions
 
 
 Les données sur la santé ont toujours constitué un élément central de l’analyse statistique. Le souhait de mesurer et d’évaluer la santé nationale a été le moteur de la mise en place des premiers systèmes d’analyse statistique. La répartition des causes de décès constituent notamment un indicateur central de l’état de santé des populations. Cette répartition présente toutefois de fortes disparités selon les pays et les régions du monde, reflétant la diversité des contextes sanitaires, démographiques et sociaux.
@@ -143,7 +145,7 @@ Les Figures 1 à 3 présentent des diagrammes en barres horizontales illustrant 
 
 Les causes de décès sont représentées sur l’axe des ordonnées, tandis que l’axe des abscisses indique le nombre de morts. Ce choix de visualisation permet une lecture claire et facilite la comparaison entre catégories.
 
-L’analyse met en évidence des profils de mortalité contrastés. En Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables de plus de 12 000 décès, tandis que le néoplasme (C20) en représente environ 6 000. En France, ces mêmes causes figurent également parmi les principales causes de mortalité, avec plus de 15 000 décès pour le néoplasme et environ 20 000 pour la cause cardiovasculaires. À l’inverse, au Mali, les maladies transmissibles ainsi que certaines maladies infectueuses occupent une place plus importante dans la mortalité totale. Ils ont entraîné environ 32 000 décès, les maladies cardiovasculaires (C12) près de 20 000 décès, et l'automutilation et la malnutrition (C18 et C25) environ 14 000 décès chacune.
+L’analyse met en évidence des profils de mortalité contrastés. En Arménie, en 2019, les maladies cardiovasculaires (C12) sont responsables de plus de 12 000 décès, tandis que le néoplasme (C20) en représente environ 6 000. En France, ces mêmes causes figurent également parmi les principales causes de mortalité, avec plus de 15 000 décès pour le néoplasme et environ 20 000 pour la cause cardiovasculaires. À l’inverse, au Mali, les maladies néonatales ont entraîné environ 32 000 décès, les maladies cardiovasculaires (C12) près de 20 000 décès, et la diarrhe et la malnutrition (C18 et C25) environ 14 000 décès chacune.
 
 Cette analyse descriptive constitue une première étape exploratoire. Elle permet de dégager des tendances générales et justifie la poursuite de l’étude par des analyses comparatives plus approfondies entre pays et groupes de causes de décès.
 
